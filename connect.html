@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect | Canopy Roads Baptist Church</title>
+<meta name="description" content="Find your place at Canopy Roads. Ministries for every age and stage — children, students, adults, small groups, men's and women's ministry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #1C3A2B;
+    --forest-mid: #2B5741;
+    --sage: #5A8A6A;
+    --sage-light: #A8C4B0;
+    --cream: #F7F3EE;
+    --warm-white: #FDFAF7;
+    --text-dark: #1A1A18;
+    --text-mid: #4A4A46;
+    --text-muted: #7A7A74;
+    --gold: #C49A3C;
+    --gold-light: #E8D5A3;
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(28, 58, 43, 0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-top: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--sage-light);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.active { color: #fff; }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--forest) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius);
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.04em;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    background: var(--forest);
+    padding: 9rem 2rem 4.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header-canopy {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    pointer-events: none;
+  }
+
+  .page-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+    color: var(--sage-light);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* JUMP NAV */
+  .jump-nav {
+    background: var(--gold);
+    padding: 0;
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+  }
+
+  .jump-nav-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .jump-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--forest);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-right: 1px solid rgba(28,58,43,0.15);
+    transition: background 0.15s;
+  }
+
+  .jump-nav a:first-child { border-left: 1px solid rgba(28,58,43,0.15); }
+  .jump-nav a:hover { background: rgba(28,58,43,0.1); }
+
+  /* SHARED SECTION */
+  .container { max-width: 1060px; margin: 0 auto; }
+
+  section { padding: 5rem 2rem; }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-body {
+    color: var(--text-mid);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--forest);
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border: 1.5px solid var(--forest);
+    border-radius: var(--radius);
+    color: var(--forest);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--forest); color: var(--cream); }
+
+  .btn-ghost-sm {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border: 1.5px solid rgba(28,58,43,0.3);
+    border-radius: var(--radius);
+    color: var(--forest-mid);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-ghost-sm:hover { border-color: var(--forest); background: rgba(28,58,43,0.04); }
+
+  .link-arrow {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sage);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.2s, color 0.2s;
+  }
+
+  .link-arrow:hover { color: var(--forest); gap: 0.5rem; }
+
+  /* MINISTRY SECTION HEADER */
+  .ministry-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(90,138,106,0.15);
+  }
+
+  .ministry-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(196,154,60,0.12);
+    color: #7a5a10;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── CHILDREN ── */
+  #children { background: var(--cream); }
+
+  .children-programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .program-card {
+    background: var(--warm-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(90,138,106,0.12);
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .program-card:hover { transform: translateY(-3px); }
+
+  .program-card-head {
+    background: var(--forest);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .program-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(196,154,60,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .program-card-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .program-card-body {
+    padding: 1.1rem 1.25rem 1.4rem;
+  }
+
+  .program-card-body p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .program-detail {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .program-detail svg { opacity: 0.6; flex-shrink: 0; }
+
+  /* ── STUDENTS ── */
+  #students { background: var(--warm-white); }
+
+  .converge-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .converge-what {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .converge-feature {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid rgba(90,138,106,0.1);
+  }
+
+  .converge-feature .icon-circle {
+    width: 40px;
+    height: 40px;
+    background: rgba(28,58,43,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.6rem;
+  }
+
+  .converge-feature h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.2rem;
+  }
+
+  .converge-feature p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .converge-info-bar {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .converge-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--sage-light);
+    font-size: 0.85rem;
+  }
+
+  .converge-info-item strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .event-card {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(90,138,106,0.12);
+    padding: 1.25rem;
+  }
+
+  .event-card-date {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .event-card h4 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+
+  .event-card p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .student-pastor {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .pastor-avatar {
+    width: 56px;
+    height: 56px;
+    background: rgba(196,154,60,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+  }
+
+  .pastor-info h4 {
+    font-weight: 600;
+    color: var(--cream);
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .pastor-info p {
+    font-size: 0.8rem;
+    color: var(--sage-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .pastor-info a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .pastor-info a:hover { color: var(--gold-light); }
+
+  /* ── SMALL GROUPS ── */
+  #groups { background: var(--cream); }
+
+  .groups-intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .groups-why {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 30px;
+  }
+
+  .why-item h4 {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--forest);
+    margin-bottom: 0.2rem;
+  }
+
+  .why-item p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .groups-list { display: flex; flex-direction: column; gap: 1px; }
+
+  .group-row {
+    background: var(--warm-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(90,138,106,0.12);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .group-row:hover { border-color: rgba(90,138,106,0.35); }
+
+  .group-day-badge {
+    background: var(--forest);
+    color: var(--cream);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius);
+    flex-shrink: 0;
+    min-width: 52px;
+    text-align: center;
+  }
+
+  .group-info { flex: 1; }
+
+  .group-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.15rem;
+  }
+
+  .group-detail {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .group-detail span { display: flex; align-items: center; gap: 0.3rem; }
+
+  .group-detail svg { opacity: 0.5; flex-shrink: 0; }
+
+  .group-contact a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sage);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .group-contact a:hover { color: var(--forest); }
+
+  /* ── ADULTS ── */
+  #adults { background: var(--warm-white); }
+
+  .adults-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .ministry-panel {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(90,138,106,0.12);
+    overflow: hidden;
+  }
+
+  .ministry-panel-head {
+    background: var(--forest-mid);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .ministry-panel-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--cream);
+  }
+
+  .ministry-panel-head p {
+    font-size: 0.75rem;
+    color: var(--sage-light);
+    margin-top: 0.15rem;
+  }
+
+  .ministry-panel-body {
+    padding: 1.5rem;
+  }
+
+  .ministry-panel-body p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .detail-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(28,58,43,0.07);
+    color: var(--forest);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-right: 0.4rem;
+  }
+
+  .study-item {
+    background: var(--warm-white);
+    border-radius: var(--radius);
+    border: 1px solid rgba(90,138,106,0.12);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .study-item h4 {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--forest);
+    margin-bottom: 0.2rem;
+  }
+
+  .study-item p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .study-item .study-time {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--forest);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .cta-section .section-title { color: var(--cream); margin-bottom: 1rem; }
+  .cta-section p { color: var(--sage-light); font-size: 0.95rem; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-cta-ghost {
+    background: transparent;
+    color: var(--cream);
+    padding: 0.75rem 1.8rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1.5px solid rgba(247,243,238,0.35);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-cta-ghost:hover { border-color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    color: var(--sage-light);
+    padding: 3.5rem 2rem 2rem;
+    border-top: 1px solid rgba(168,196,176,0.15);
+  }
+
+  .footer-grid {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(168,196,176,0.15);
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+    max-width: 240px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col a {
+    display: block;
+    color: var(--sage-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    max-width: 1060px;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a { color: var(--sage-light); transition: color 0.2s; }
+  .social-links a:hover { color: var(--cream); }
+
+  /* DIVIDERS between major sections */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(90,138,106,0.15);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 64px; left: 0; right: 0;
+      background: var(--forest);
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+    }
+    .nav-toggle { display: flex; }
+
+    .jump-nav-inner { gap: 0; overflow-x: auto; justify-content: flex-start; }
+    .jump-nav a { padding: 0.9rem 1.1rem; font-size: 0.75rem; white-space: nowrap; }
+
+    .converge-hero,
+    .groups-intro-grid,
+    .adults-grid { grid-template-columns: 1fr; }
+
+    .converge-what { grid-template-columns: 1fr 1fr; }
+
+    .ministry-header { flex-direction: column; gap: 0.5rem; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+
+    .group-row { flex-wrap: wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    Canopy Roads Baptist<span>Tallahassee, Florida</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html" class="active">Ministries</a></li>
+    <li><a href="https://www.canopyroads.org/media">Sermons</a></li>
+    <li><a href="https://www.canopyroads.org/calendar">Events</a></li>
+    <li><a href="https://www.canopyroads.org/contribute">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">Plan your visit</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <svg class="page-header-canopy" viewBox="0 0 1440 120" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,120 L0,80 Q80,40 160,70 Q240,20 320,60 Q400,10 480,55 Q560,5 640,50 Q720,0 800,48 Q880,5 960,50 Q1040,10 1120,55 Q1200,20 1280,62 Q1360,35 1440,65 L1440,120 Z" fill="rgba(43,87,65,0.4)"/>
+    <path d="M0,120 L0,100 Q120,70 240,95 Q360,65 480,90 Q600,68 720,90 Q840,68 960,90 Q1080,68 1200,90 Q1320,72 1440,90 L1440,120 Z" fill="rgba(28,58,43,0.6)"/>
+  </svg>
+  <p class="page-eyebrow">Find your place</p>
+  <h1 class="page-title">Ministries &amp; Community</h1>
+  <p class="page-subtitle">No matter your age or season of life, there's a place for you here. We've built communities for kids, students, and adults — because faith grows better together.</p>
+</header>
+
+<!-- JUMP NAV -->
+<nav class="jump-nav" aria-label="Section navigation">
+  <div class="jump-nav-inner">
+    <a href="#children">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Children
+    </a>
+    <a href="#students">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      Students
+    </a>
+    <a href="#groups">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Small Groups
+    </a>
+    <a href="#adults">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+      Adults
+    </a>
+  </div>
+</nav>
+
+<!-- ── CHILDREN ── -->
+<section id="children">
+  <div class="container">
+    <div class="ministry-header">
+      <div>
+        <div class="ministry-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Children's Ministry
+        </div>
+        <h2 class="section-title" style="margin-bottom:0.75rem;">Kids who know Jesus,<br>families who grow together.</h2>
+        <p class="section-body" style="margin-bottom:0;">We teach kids who God is and how His Word applies to their lives in personal, creative, and memorable ways. Through engaging teaching, fun music, and close-knit small group classes, we guide kids toward a real relationship with God — and partner with parents every step of the way.</p>
+      </div>
+    </div>
+
+    <div class="children-programs">
+
+      <div class="program-card">
+        <div class="program-card-head">
+          <div class="program-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+          </div>
+          <h3>Preschool</h3>
+        </div>
+        <div class="program-card-body">
+          <p>Our preschool ministry gives the littlest ones a safe, joyful introduction to God's love — through songs, play, and simple Bible stories that stick.</p>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Birth through Pre-K
+          </div>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Both Sunday services
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="https://www.canopyroads.org/connect/canopy-kidz-preschool" class="link-arrow">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-card-head" style="background:var(--forest-mid);">
+          <div class="program-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>CRBC Kids Elementary</h3>
+        </div>
+        <div class="program-card-body">
+          <p>Elementary-age kids dive deeper into Scripture through creative teaching, small groups, and age-appropriate worship. We want every kid to know the Bible points to Jesus.</p>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Kindergarten – 5th grade
+          </div>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Both Sunday services
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="https://www.canopyroads.org/connect/canopy-kidz-elementary" class="link-arrow">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-card-head" style="background:#2B5741;">
+          <div class="program-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Good News Club</h3>
+        </div>
+        <div class="program-card-body">
+          <p>Good News Club meets at local elementary schools to bring the gospel to kids in our community who may never come through our church doors.</p>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Local elementary schools
+          </div>
+          <div class="program-detail">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Volunteers welcome
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="https://www.canopyroads.org/connect/good-news-club" class="link-arrow">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card" style="border: 2px solid var(--gold);">
+        <div class="program-card-head" style="background:var(--gold);">
+          <div class="program-icon" style="background:rgba(28,58,43,0.15);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 style="color:var(--forest);">VBS 2026</h3>
+        </div>
+        <div class="program-card-body">
+          <p>Vacation Bible School is one of the highlights of the summer. Kids experience high-energy worship, Bible teaching, crafts, games, and community — all in one week.</p>
+          <div class="program-detail" style="color:var(--text-dark); font-weight:500;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Summer 2026 — dates coming soon
+          </div>
+          <div style="margin-top:1rem;">
+            <a href="https://www.canopyroads.org/connect/vbs-2026" class="btn-primary" style="font-size:0.8rem; padding:0.5rem 1.1rem;">Register for VBS →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── STUDENTS ── -->
+<section id="students">
+  <div class="container">
+    <div class="ministry-header">
+      <div>
+        <div class="ministry-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          Student Ministry
+        </div>
+        <h2 class="section-title" style="margin-bottom:0.75rem;">Students who are missionaries<br>to their own schools.</h2>
+        <p class="section-body" style="margin-bottom:0;">Converge Student Ministry exists to ignite a movement of missionaries who are influencing others to trust and follow Jesus by living S.E.N.T. We believe middle and high schoolers are world-changers in the making — and we take them seriously.</p>
+      </div>
+    </div>
+
+    <div class="converge-hero">
+      <div>
+        <div class="converge-info-bar">
+          <div class="converge-info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Every <strong>Wednesday</strong></span>
+          </div>
+          <div class="converge-info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span><strong>5:30–8:00pm</strong></span>
+          </div>
+          <div class="converge-info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Canopy Roads Baptist</strong></span>
+          </div>
+          <div class="converge-info-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Grades <strong>6–12</strong></span>
+          </div>
+        </div>
+
+        <div class="converge-what">
+          <div class="converge-feature">
+            <div class="icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h4>Worship</h4>
+            <p>Inspiring music to open the night</p>
+          </div>
+          <div class="converge-feature">
+            <div class="icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h4>Message</h4>
+            <p>Biblical teaching for their world</p>
+          </div>
+          <div class="converge-feature">
+            <div class="icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Small Groups</h4>
+            <p>Real conversations, real community</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">
+          <strong style="color:var(--text-dark);">Dinner available:</strong> $2 pizza / $4 Chick-fil-A — or grab a $20 meal card to prepay.
+        </p>
+
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="https://canopyroads.tpsdb.com/OnlineReg/1469" class="btn-primary" target="_blank" rel="noopener">Buy a meal card</a>
+          <a href="https://www.facebook.com/CanopyRoadsStudentMinistry" class="btn-ghost-sm" target="_blank" rel="noopener">Follow on Facebook</a>
+          <a href="https://www.instagram.com/overflow.sm/" class="btn-ghost-sm" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-bottom:1rem;">Summer 2025 events</p>
+        <div class="events-grid" style="grid-template-columns:1fr;">
+
+          <div class="event-card">
+            <div class="event-card-date">June 8–13, 2026</div>
+            <h4>Student Camp 2026</h4>
+            <p>Days serving in the community, evenings of powerful worship, small groups, and the Mega Relay. $125 non-refundable deposit to reserve your spot.</p>
+            <div style="margin-top:0.75rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <a href="https://canopyroads.tpsdb.com/OnlineReg/1541" class="btn-primary" style="font-size:0.78rem; padding:0.45rem 0.9rem;" target="_blank" rel="noopener">Register</a>
+              <a href="https://docs.google.com/document/d/1mKbZAtKiCB759cNZCTnureHbZlvx8jtOrfbup3XiNs/edit" class="btn-ghost-sm" style="font-size:0.78rem; padding:0.45rem 0.9rem;" target="_blank" rel="noopener">Parent info</a>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-card-date">June 3 — Subzero Night</div>
+            <h4>Ice-themed games</h4>
+            <p>Dinner at 5:30, message, then high-energy ice-themed competition. Ends at 8pm.</p>
+          </div>
+
+          <div class="event-card">
+            <div class="event-card-date">June 17 — Noodle Games</div>
+            <h4>Pool noodle battles</h4>
+            <p>Fast-paced, creative games using nothing but pool noodles. Dinner, message, chaos.</p>
+          </div>
+
+          <div class="event-card">
+            <div class="event-card-date">June 24 — Water War</div>
+            <h4>All-out water battle</h4>
+            <p>Dinner, message, then an all-out water battle with competitive high-energy games.</p>
+          </div>
+
+        </div>
+
+        <p style="margin-top:0.75rem; font-size:0.78rem; color:var(--text-muted);">
+          More events coming — July includes Shaving Cream Wiffle Ball (Jul 8), Slime War (Jul 22), and the Big Water Slide (Jul 29).
+          <a href="https://www.canopyroads.org/calendar" style="color:var(--sage); font-weight:600; text-decoration:none;"> Full calendar →</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-bottom:0.75rem;">Required forms</p>
+      <div style="background:rgba(196,154,60,0.08); border:1px solid rgba(196,154,60,0.25); border-radius:var(--radius); padding:0.9rem 1.1rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <div>
+          <div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">Medical information / release form</div>
+          <div style="font-size:0.78rem; color:var(--text-muted);">Required and must be notarized within the last year for off-campus activities.</div>
+        </div>
+        <a href="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/documents/Activity_Consent_Medical_Release.pdf" class="btn-ghost-sm" target="_blank" rel="noopener" style="margin-left:auto;">Download form</a>
+      </div>
+    </div>
+
+    <div class="student-pastor">
+      <div class="pastor-avatar">J</div>
+      <div class="pastor-info">
+        <h4>Jayce DuBose</h4>
+        <p>Student Pastor</p>
+        <a href="https://calendar.app.google/VBvuqShyRBcSXc4D9" target="_blank" rel="noopener">Schedule a call or meeting with Jayce →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── SMALL GROUPS ── -->
+<section id="groups">
+  <div class="container">
+    <div class="ministry-header">
+      <div>
+        <div class="ministry-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Small Groups
+        </div>
+        <h2 class="section-title" style="margin-bottom:0.75rem;">You're not meant to<br>do this alone.</h2>
+        <p class="section-body" style="margin-bottom:0;">Fully devoted followers of Christ connect with believers weekly. Joining a community matures our faith, creates a sense of belonging, and gives us examples to follow.</p>
+      </div>
+    </div>
+
+    <div class="groups-intro-grid">
+      <div>
+        <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-bottom:1.5rem;">Why join a group</p>
+        <div class="groups-why">
+          <div class="why-item">
+            <div class="why-num">1</div>
+            <div>
+              <h4>Faith grows in community</h4>
+              <p>Weekly connection with other believers keeps faith from becoming a solo habit. Iron sharpens iron.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">2</div>
+            <div>
+              <h4>You'll have people who know you</h4>
+              <p>A group is the difference between attending a church and belonging to one. It's where people notice when you're missing.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">3</div>
+            <div>
+              <h4>Real-life discipleship happens here</h4>
+              <p>Groups aren't just Bible studies — they're where you learn to apply Scripture in your actual life, from people in the thick of it too.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1.25rem;">Not sure which group? <a href="mailto:info@canopyroads.org" style="color:var(--sage); font-weight:600; text-decoration:none;">Email us and we'll help you find one.</a></p>
+
+        <!-- Sunday Groups -->
+        <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--forest); margin-bottom:0.6rem; margin-top:0.5rem;">Sunday morning groups</p>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 9:30</span>
+          <div class="group-info">
+            <div class="group-name">Harper Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room A111, CRBC campus</span>
+              <span>Todd &amp; Amber Harper</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:riverotter1@hotmail.com">Email</a></div>
+        </div>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 9:30</span>
+          <div class="group-info">
+            <div class="group-name">Webber Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room A109, CRBC campus</span>
+              <span>Steve &amp; Liz Webber</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:stevenbwebber@gmail.com">Email</a></div>
+        </div>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 11am</span>
+          <div class="group-info">
+            <div class="group-name">McQuerry Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room A110, CRBC campus</span>
+              <span>Travis &amp; Meredith McQuerry</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:travis.mcquerry@me.com">Email</a></div>
+        </div>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 11am</span>
+          <div class="group-info">
+            <div class="group-name">D.I.G.G. Newton Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room A113, CRBC campus</span>
+              <span>Lance &amp; Mary Taylor</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:papalancet@gmail.com">Email</a></div>
+        </div>
+
+        <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--forest); margin-bottom:0.6rem; margin-top:1.25rem;">Evening home groups</p>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 6pm</span>
+          <div class="group-info">
+            <div class="group-name">Wester Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>In-home</span>
+              <span>Justin &amp; Lindsey Wester</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:info@canopyroads.org">Email</a></div>
+        </div>
+
+        <div class="group-row">
+          <span class="group-day-badge">Sun 6pm</span>
+          <div class="group-info">
+            <div class="group-name">Bowen Group</div>
+            <div class="group-detail">
+              <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>In-home</span>
+              <span>Patrick &amp; Patricia Bowen</span>
+            </div>
+          </div>
+          <div class="group-contact"><a href="mailto:patriciabowen@aol.com">Email</a></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── ADULTS ── -->
+<section id="adults">
+  <div class="container">
+    <div class="ministry-header">
+      <div>
+        <div class="ministry-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+          Adults
+        </div>
+        <h2 class="section-title" style="margin-bottom:0.75rem;">Men and women going deeper,<br>together and apart.</h2>
+        <p class="section-body" style="margin-bottom:0;">Young or old, Christian or not, single or married — we have places for adults to grow in faith and build real community.</p>
+      </div>
+    </div>
+
+    <div class="adults-grid">
+
+      <!-- Men's Ministry -->
+      <div class="ministry-panel">
+        <div class="ministry-panel-head">
+          <div class="program-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+          </div>
+          <div>
+            <h3>Point-to-Point Men's Ministry</h3>
+            <p>A place for men to learn, help, and hold each other accountable</p>
+          </div>
+        </div>
+        <div class="ministry-panel-body">
+          <p>Point-to-Point is focused on providing a place for men to learn from one another, help one another, and drive one another to be focused on our walk in faith. Life's not perfect — things are tough and obstacles are everywhere. But if we focus on our final destination in Christ, we can go over, under, and through those obstacles together.</p>
+          <div style="margin-bottom:1rem;">
+            <span class="detail-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Every Monday
+            </span>
+            <span class="detail-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              7:00pm
+            </span>
+            <span class="detail-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Lofty Pursuit, 6267 Old Water Oak Rd
+            </span>
+          </div>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a href="https://www.youtube.com/embed/8v-4b8OAGoI" class="btn-outline" target="_blank" rel="noopener">Watch the video</a>
+            <a href="mailto:Konrad.Jonathan@gmail.com" class="btn-ghost-sm">Contact Point-to-Point</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Women's Ministry -->
+      <div class="ministry-panel">
+        <div class="ministry-panel-head" style="background:var(--sage);">
+          <div class="program-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div>
+            <h3>Women's Ministry</h3>
+            <p>A multi-generational community of women glorifying God together</p>
+          </div>
+        </div>
+        <div class="ministry-panel-body">
+          <p>Our women's ministry brings together women from all seasons of life — young and old, longtime members and newcomers — for deep community rooted in God's Word. Whether you're looking for a weekly Bible study or a place to belong, there's a spot for you.</p>
+
+          <div class="study-item">
+            <div class="study-time">Wednesdays · 9:30–11:00am</div>
+            <h4>Kanvas Women's Bible Study</h4>
+            <p>Currently studying <em>Lord, Heal My Hurts</em> by Kay Arthur — a 13-week study meeting in Room A111. Books available for $13. Childcare provided upon request.</p>
+            <div style="margin-top:0.75rem;">
+              <a href="https://canopyroads.tpsdb.com/OnlineReg/1475" class="btn-primary" style="font-size:0.78rem; padding:0.45rem 0.9rem;" target="_blank" rel="noopener">Register for Kanvas</a>
+            </div>
+          </div>
+
+          <div class="study-item">
+            <div class="study-time">Thursdays · 10:00am–12:00pm</div>
+            <h4>Women's Christian Fellowship</h4>
+            <p>A weekly gathering for fellowship, prayer, and encouragement across generations.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p class="page-eyebrow">Take the next step</p>
+    <h2 class="section-title" style="color:var(--cream); margin-bottom:1rem;">Not sure where you fit?</h2>
+    <p style="color:var(--sage-light); font-size:0.95rem; max-width:480px; margin:0 auto 2rem; line-height:1.7;">Reach out and we'll help you find the right group, ministry, or next step. You don't have to figure it out alone.</p>
+    <div class="cta-actions">
+      <a href="mailto:info@canopyroads.org" class="btn-primary">Email us</a>
+      <a href="visit.html" class="btn-cta-ghost">Plan your first visit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.2rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <a href="visit.html">Plan your visit</a>
+      <a href="https://www.canopyroads.org/come">What to expect</a>
+      <a href="https://www.canopyroads.org/about-us/meet-our-team">Our team</a>
+      <a href="https://www.canopyroads.org/about-us/mission-and-vision">Mission &amp; vision</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">Ministries</a>
+      <a href="https://www.canopyroads.org/media">Sermons</a>
+      <a href="https://www.canopyroads.org/calendar">Events calendar</a>
+      <a href="http://canopyroads.online.church" target="_blank" rel="noopener">Church online</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee, FL 32312</a>
+      <a href="https://www.canopyroads.org/contribute">Give online</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church</span>
+    <div class="social-links">
+      <a href="https://www.facebook.com/canopyroads" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/canopyroadsbaptistchurch/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1C3A2B"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
+  });
+</script>
+</body>
+</html>

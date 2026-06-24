@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media | Canopy Roads Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:  #1C3A2B;
+      --sage:    #5A8A6A;
+      --cream:   #F7F3EE;
+      --gold:    #C49A3C;
+      --gold-lt: #F0DFA0;
+      --text:    #2C2C2C;
+      --muted:   #6B7280;
+      --border:  #DDD6CC;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--forest); padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.1rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); flex-direction: column; padding: 1rem 2rem; gap: .5rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--forest); color: #fff; text-align: center; padding: 3.5rem 2rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .page-header::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C150,0 300,60 450,30 C600,0 750,60 900,30 C1050,0 1150,45 1200,30 L1200,60 L0,60Z' fill='%23F7F3EE'/%3E%3C/svg%3E") no-repeat bottom/cover;
+    }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: .5rem; }
+    .page-header p { color: rgba(255,255,255,.75); font-size: 1.05rem; }
+
+    /* ── LATEST SERMON HERO ── */
+    .latest-hero {
+      background: #111d17; color: #fff; padding: 3rem 2rem;
+    }
+    .latest-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    @media (max-width: 700px) { .latest-inner { grid-template-columns: 1fr; } }
+    .latest-label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+    .latest-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-style: italic; line-height: 1.25; margin-bottom: .5rem; }
+    .latest-meta { color: rgba(255,255,255,.6); font-size: .9rem; margin-bottom: 1.5rem; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold); color: #fff; padding: .75rem 1.5rem;
+      border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem;
+      transition: background .2s; margin-right: .75rem;
+    }
+    .btn-download:hover { background: #a07d2e; }
+    .btn-youtube {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1.5px solid rgba(255,255,255,.4); color: #fff; padding: .75rem 1.5rem;
+      border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-youtube:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    .latest-video iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 10px; }
+
+    /* ── WATCH SECTION ── */
+    .watch-section { padding: 3.5rem 2rem; }
+    .section-label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); margin-bottom: .4rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--forest); margin-bottom: 1.75rem; }
+    .watch-cards { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .watch-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start;
+      text-decoration: none; color: inherit; transition: box-shadow .2s, transform .15s;
+    }
+    .watch-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .watch-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    .watch-icon.yt  { background: #ff000015; }
+    .watch-icon.pod { background: #8e44ad15; }
+    .watch-icon.app { background: #1a73e815; }
+    .watch-card h3 { font-size: 1rem; font-weight: 600; color: var(--forest); margin-bottom: .35rem; }
+    .watch-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 1rem; }
+    .watch-card .card-link { font-size: .85rem; font-weight: 600; color: var(--sage); }
+
+    /* ── SERMON ARCHIVE ── */
+    .archive-section { padding: 1rem 2rem 4rem; }
+    .archive-inner { max-width: 900px; margin: 0 auto; }
+
+    /* search bar */
+    .search-bar {
+      display: flex; gap: .75rem; margin-bottom: 1.75rem; flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1; min-width: 200px; padding: .65rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: .95rem; font-family: 'Inter', sans-serif;
+      background: #fff; color: var(--text); outline: none;
+    }
+    .search-bar input:focus { border-color: var(--sage); }
+    .view-toggle { display: flex; gap: .5rem; }
+    .view-btn {
+      padding: .6rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+      background: #fff; font-size: .85rem; font-weight: 600; cursor: pointer;
+      color: var(--muted); transition: .2s;
+    }
+    .view-btn.active { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+    /* year tabs */
+    .year-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .year-tab {
+      padding: .45rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); background: #fff; color: var(--muted);
+      transition: .2s;
+    }
+    .year-tab.active { background: var(--forest); color: #fff; border-color: var(--forest); }
+    .year-tab:hover:not(.active) { border-color: var(--sage); color: var(--sage); }
+
+    /* list view */
+    #list-view { display: block; }
+    .sermon-list { display: flex; flex-direction: column; gap: .5rem; }
+    .sermon-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      background: #fff; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .75rem 1rem; text-decoration: none; color: inherit;
+      transition: box-shadow .15s, border-color .15s;
+    }
+    .sermon-row:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); border-color: var(--sage); }
+    .sermon-row-left { display: flex; align-items: center; gap: .85rem; min-width: 0; }
+    .sermon-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .sermon-info { min-width: 0; }
+    .sermon-title { font-weight: 600; font-size: .95rem; color: var(--forest); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sermon-date { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+    .sermon-series-tag {
+      display: inline-block; font-size: .72rem; font-weight: 600; padding: .2rem .55rem;
+      border-radius: 999px; background: var(--forest); color: #fff; flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .dl-badge {
+      font-size: .75rem; font-weight: 600; padding: .25rem .65rem; border-radius: 6px;
+      background: var(--cream); border: 1px solid var(--border); color: var(--muted);
+      flex-shrink: 0; letter-spacing: .04em;
+    }
+
+    /* series view */
+    #series-view { display: none; }
+    .series-group { margin-bottom: 1.25rem; border: 1.5px solid var(--border); border-radius: 12px; background: #fff; overflow: hidden; }
+    .series-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 1.1rem; cursor: pointer; user-select: none;
+      background: #fff; transition: background .15s;
+    }
+    .series-header:hover { background: #f5f1ec; }
+    .series-header-left { display: flex; align-items: center; gap: .75rem; }
+    .series-name { font-weight: 600; font-size: .95rem; color: var(--forest); }
+    .series-count { font-size: .78rem; color: var(--muted); font-weight: 400; }
+    .series-chevron { font-size: .8rem; color: var(--muted); transition: transform .2s; }
+    .series-header.open .series-chevron { transform: rotate(90deg); }
+    .series-body { border-top: 1px solid var(--border); display: none; }
+    .series-body.open { display: block; }
+    .series-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .6rem 1.1rem; border-bottom: 1px solid #f0ece6; gap: 1rem;
+      text-decoration: none; color: inherit; transition: background .1s;
+    }
+    .series-row:last-child { border-bottom: none; }
+    .series-row:hover { background: #faf8f4; }
+    .series-row-title { font-size: .9rem; color: var(--text); }
+    .series-row-date { font-size: .78rem; color: var(--muted); flex-shrink: 0; }
+
+    /* no results */
+    .no-results { text-align: center; padding: 2.5rem; color: var(--muted); font-size: .95rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--forest); color: rgba(255,255,255,.7); padding: 2.5rem 2rem; text-align: center; font-size: .875rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.6); }
+    .footer-links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">Canopy Roads</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html">Connect</a></li>
+    <li><a href="media.html" class="active">Media</a></li>
+    <li><a href="https://www.canopyroads.org/about-us/meet-our-team" target="_blank">About Us</a></li>
+    <li><a href="https://www.canopyroads.org/contribute" target="_blank">Give</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <h1>Sermons &amp; Media</h1>
+  <p>Watch, listen, and download — whenever works for you.</p>
+</section>
+
+<!-- LATEST SERMON HERO -->
+<section class="latest-hero" id="latestHero">
+  <div class="latest-inner">
+    <div class="latest-info">
+      <div class="latest-label">Latest Sermon</div>
+      <h2 class="latest-title" id="latestTitle">Loading…</h2>
+      <p class="latest-meta" id="latestMeta"></p>
+      <div id="latestActions"></div>
+    </div>
+    <div class="latest-video">
+      <iframe id="latestEmbed"
+        src="https://www.youtube.com/embed/WuKFlQfpPEQ"
+        title="Latest Sermon"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- WATCH / LISTEN CARDS -->
+<section class="watch-section">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;margin-bottom:1.5rem">
+    <div class="section-label">Watch &amp; Listen</div>
+    <h2 class="section-title" style="margin-bottom:0">Catch up wherever you are</h2>
+  </div>
+  <div class="watch-cards">
+    <a class="watch-card" href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank">
+      <div class="watch-icon yt">▶️</div>
+      <h3>YouTube</h3>
+      <p>Full Sunday messages, all past series, and live-stream replays on the CRBC YouTube channel.</p>
+      <span class="card-link">Watch on YouTube →</span>
+    </a>
+    <a class="watch-card" href="https://podcasts.apple.com/us/podcast/canopy-roads-baptist-church/id1418160707" target="_blank">
+      <div class="watch-icon pod">🎙️</div>
+      <h3>Apple Podcasts</h3>
+      <p>Audio-only sermons you can listen to anytime. 500+ episodes available on Apple Podcasts.</p>
+      <span class="card-link">Listen on Apple Podcasts →</span>
+    </a>
+    <a class="watch-card" href="https://apps.apple.com/us/app/canopy-roads-baptist-church/id1508367050" target="_blank">
+      <div class="watch-icon app">📱</div>
+      <h3>CRBC App</h3>
+      <p>Sermons, devotionals, events, and giving — all in one place. Available on iOS and Android.</p>
+      <span class="card-link">Get the CRBC App →</span>
+    </a>
+  </div>
+</section>
+
+<!-- SERMON NOTES ARCHIVE -->
+<section class="archive-section">
+  <div class="archive-inner">
+    <div class="section-label">Sermon Notes</div>
+    <h2 class="section-title">Full Archive — 2022 to Present</h2>
+
+    <!-- Search + View Toggle -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by title or series…" oninput="filterSermons()">
+      <div class="view-toggle" id="viewToggle">
+        <button class="view-btn active" id="btnList" onclick="setView('list')">By Date</button>
+        <button class="view-btn" id="btnSeries" onclick="setView('series')">By Series</button>
+      </div>
+    </div>
+
+    <!-- Year Tabs -->
+    <div class="year-tabs" id="yearTabs"></div>
+
+    <!-- List View -->
+    <div id="list-view">
+      <div class="sermon-list" id="sermonList"></div>
+      <div class="no-results" id="noResults" style="display:none">No sermons match your search.</div>
+    </div>
+
+    <!-- Series View -->
+    <div id="series-view">
+      <div id="seriesGroups"></div>
+      <div class="no-results" id="noResultsSeries" style="display:none">No sermons match your search.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="visit.html">Plan Your Visit</a>
+    <a href="connect.html">Connect</a>
+    <a href="media.html">Media</a>
+    <a href="https://www.canopyroads.org/contribute" target="_blank">Give</a>
+    <a href="http://canopyroads.online.church" target="_blank">Watch Online</a>
+  </div>
+  <p>Canopy Roads Baptist Church · 925 Bannerman Rd, Tallahassee, FL 32312 · (850) 906-0047</p>
+  <p style="margin-top:.5rem">Sunday Services: 9:30am &amp; 11am · <a href="http://canopyroads.online.church" target="_blank">Online: Sundays 11:15am &amp; Wednesdays 6:30pm</a></p>
+</footer>
+
+<script>
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ── Load latest sermon ──
+async function loadLatest() {
+  try {
+    const r = await fetch('sermon-latest.json');
+    const d = await r.json();
+    document.getElementById('latestTitle').textContent = d.title || 'Sunday Sermon';
+    document.getElementById('latestMeta').textContent =
+      [d.date, d.series, d.pastor].filter(Boolean).join(' · ');
+
+    const actions = document.getElementById('latestActions');
+    let html = '';
+    if (d.url) html += `<a class="btn-download" href="${d.url}" target="_blank">⬇ Download Notes</a>`;
+    html += `<a class="btn-youtube" href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank">▶ Watch on YouTube</a>`;
+    actions.innerHTML = html;
+
+    if (d.youtube_embed) {
+      document.getElementById('latestEmbed').src = d.youtube_embed;
+    }
+  } catch(e) {
+    // fallback — keep defaults already in HTML
+    document.getElementById('latestTitle').textContent = 'Sunday Sermon';
+    document.getElementById('latestActions').innerHTML =
+      `<a class="btn-youtube" href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank">▶ Watch on YouTube</a>`;
+  }
+}
+
+// ── Load sermon archive ──
+let allSermons = {};
+let currentYear = '2026';
+let currentView = 'list';
+
+async function loadArchive() {
+  try {
+    const r = await fetch('sermons.json');
+    const d = await r.json();
+    allSermons = d.sermons || {};
+
+    // Build year tabs
+    const years = Object.keys(allSermons).sort((a,b) => b - a);
+    const tabContainer = document.getElementById('yearTabs');
+    years.forEach((yr, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'year-tab' + (i === 0 ? ' active' : '');
+      btn.textContent = yr;
+      btn.onclick = () => selectYear(yr);
+      tabContainer.appendChild(btn);
+    });
+
+    currentYear = years[0];
+    renderCurrentView();
+  } catch(e) {
+    document.getElementById('sermonList').innerHTML =
+      '<p style="color:var(--muted);padding:1rem">Could not load sermon archive. Make sure sermons.json is uploaded.</p>';
+  }
+}
+
+function selectYear(yr) {
+  currentYear = yr;
+  document.querySelectorAll('.year-tab').forEach(t => {
+    t.classList.toggle('active', t.textContent === yr);
+  });
+  renderCurrentView();
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('btnList').classList.toggle('active', v === 'list');
+  document.getElementById('btnSeries').classList.toggle('active', v === 'series');
+  document.getElementById('list-view').style.display = v === 'list' ? 'block' : 'none';
+  document.getElementById('series-view').style.display = v === 'series' ? 'block' : 'none';
+  // hide year tabs in series view (series span within a year already)
+  document.getElementById('yearTabs').style.display = v === 'list' ? 'flex' : 'none';
+  renderCurrentView();
+}
+
+function getExt(url) {
+  if (!url) return '';
+  const u = url.toLowerCase();
+  if (u.endsWith('.pdf')) return 'PDF';
+  if (u.endsWith('.docx')) return 'DOCX';
+  return 'DOC';
+}
+
+function filterSermons() {
+  renderCurrentView();
+}
+
+function renderCurrentView() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  if (currentView === 'list') renderList(q);
+  else renderSeries(q);
+}
+
+function renderList(q) {
+  const data = allSermons[currentYear] || [];
+  const filtered = q
+    ? data.filter(s => s.title.toLowerCase().includes(q) || (s.series||'').toLowerCase().includes(q))
+    : data;
+
+  const list = document.getElementById('sermonList');
+  const none = document.getElementById('noResults');
+
+  if (!filtered.length) {
+    list.innerHTML = '';
+    none.style.display = 'block';
+    return;
+  }
+  none.style.display = 'none';
+
+  list.innerHTML = filtered.map(s => {
+    const ext = getExt(s.url);
+    const seriesTag = s.series ? `<span class="sermon-series-tag">${s.series}</span>` : '';
+    return `<a class="sermon-row" href="${s.url}" target="_blank">
+      <div class="sermon-row-left">
+        <span class="sermon-icon">${ext === 'PDF' ? '📄' : '📝'}</span>
+        <div class="sermon-info">
+          <div class="sermon-title">${s.title}</div>
+          <div class="sermon-date">${s.date}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;flex-shrink:0">
+        ${seriesTag}
+        <span class="dl-badge">${ext}</span>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function renderSeries(q) {
+  // Aggregate across ALL years in series view
+  const all = Object.values(allSermons).flat();
+  const filtered = q
+    ? all.filter(s => s.title.toLowerCase().includes(q) || (s.series||'').toLowerCase().includes(q))
+    : all;
+
+  // Group by series
+  const grouped = {};
+  filtered.forEach(s => {
+    const key = s.series || '— Standalone Sermons';
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(s);
+  });
+
+  const container = document.getElementById('seriesGroups');
+  const none = document.getElementById('noResultsSeries');
+
+  const keys = Object.keys(grouped);
+  if (!keys.length) {
+    container.innerHTML = '';
+    none.style.display = 'block';
+    return;
+  }
+  none.style.display = 'none';
+
+  // Sort: named series first (alphabetically), standalone last
+  keys.sort((a, b) => {
+    if (a.startsWith('—')) return 1;
+    if (b.startsWith('—')) return -1;
+    return a.localeCompare(b);
+  });
+
+  container.innerHTML = keys.map(key => {
+    const sermons = grouped[key];
+    const rows = sermons.map(s =>
+      `<a class="series-row" href="${s.url}" target="_blank">
+        <span class="series-row-title">${s.title}</span>
+        <span class="series-row-date">${s.date} · ${getExt(s.url)}</span>
+      </a>`
+    ).join('');
+
+    return `<div class="series-group">
+      <div class="series-header" onclick="toggleSeries(this)">
+        <div class="series-header-left">
+          <span class="series-name">${key}</span>
+          <span class="series-count">${sermons.length} sermon${sermons.length !== 1 ? 's' : ''}</span>
+        </div>
+        <span class="series-chevron">▶</span>
+      </div>
+      <div class="series-body">${rows}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSeries(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// Init
+loadLatest();
+loadArchive();
+</script>
+</body>
+</html>

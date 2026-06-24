@@ -1,0 +1,9 @@
+{
+  "_readme": "UPDATE THIS EVERY WEEK. This tiny file powers the 'Latest Sermon' card on the homepage AND the hero on the media page. Only two fields are required: title and url. Fill in the others if you have them. Re-upload this file to HostGator after editing — the pages auto-update.",
+  "date": "June 21, 2026",
+  "title": "Promises to Live By",
+  "series": "War Within",
+  "pastor": "Pastor Matt Hall",
+  "url": "https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/documents/2_Promises_to_Life_By.pdf",
+  "youtube_embed": "https://www.youtube.com/embed/WuKFlQfpPEQ"
+}
