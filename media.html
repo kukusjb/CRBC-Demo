@@ -24,21 +24,23 @@
 
     /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--forest); padding: 0 2rem;
+      position: sticky; top: 0; z-index: 200;
+      background: var(--forest); height: 64px; padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px; box-shadow: 0 2px 12px rgba(0,0,0,.3);
+      box-shadow: 0 2px 20px rgba(0,0,0,.3);
     }
-    .nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.1rem; text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .hamburger { display: none; background: none; border: none; cursor: pointer; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
+    .nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #A8C4B0; font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: #A8C4B0; text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: 4px; font-weight: 600 !important; font-size: .8rem !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
     @media (max-width: 768px) {
-      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); flex-direction: column; padding: 1rem 2rem; gap: .5rem; }
-      .nav-links.open { display: flex; }
-      .hamburger { display: block; }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
+      .hamburger { display: flex; }
     }
 
     /* ── PAGE HEADER ── */
@@ -185,27 +187,34 @@
     .no-results { text-align: center; padding: 2.5rem; color: var(--muted); font-size: .95rem; }
 
     /* ── FOOTER ── */
-    footer { background: var(--forest); color: rgba(255,255,255,.7); padding: 2.5rem 2rem; text-align: center; font-size: .875rem; }
-    footer a { color: var(--gold); text-decoration: none; }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,.6); }
-    .footer-links a:hover { color: var(--gold); }
+    footer { background: var(--forest); color: #A8C4B0; padding: 3rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.12); }
+    .footer-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
+    .footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
+    .footer-col a { display: block; color: #A8C4B0; text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { max-width: 1080px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="index.html">Canopy Roads</a>
+  <a class="nav-logo" href="index.html">
+    Canopy Roads Baptist
+    <small>Tallahassee, Florida</small>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="visit.html">Plan Your Visit</a></li>
-    <li><a href="connect.html">Connect</a></li>
-    <li><a href="media.html" class="active">Media</a></li>
-    <li><a href="https://www.canopyroads.org/about-us/meet-our-team" target="_blank">About Us</a></li>
+    <li><a href="connect.html">Ministries</a></li>
+    <li><a href="media.html" class="active">Sermons</a></li>
+    <li><a href="calendar.html">Events</a></li>
     <li><a href="https://www.canopyroads.org/contribute" target="_blank">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">First visit?</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -297,22 +306,42 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="visit.html">Plan Your Visit</a>
-    <a href="connect.html">Connect</a>
-    <a href="media.html">Media</a>
-    <a href="https://www.canopyroads.org/contribute" target="_blank">Give</a>
-    <a href="http://canopyroads.online.church" target="_blank">Watch Online</a>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.15rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="team.html">Meet Our Team</a>
+      <a href="mission.html">Mission &amp; Vision</a>
+      <a href="visit.html">Plan Your Visit</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">Ministries</a>
+      <a href="media.html">Sermons</a>
+      <a href="calendar.html">Events</a>
+      <a href="http://canopyroads.online.church" target="_blank">Church Online</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee, FL 32312</a>
+      <a href="https://www.canopyroads.org/contribute" target="_blank">Give Online</a>
+    </div>
   </div>
-  <p>Canopy Roads Baptist Church · 925 Bannerman Rd, Tallahassee, FL 32312 · (850) 906-0047</p>
-  <p style="margin-top:.5rem">Sunday Services: 9:30am &amp; 11am · <a href="http://canopyroads.online.church" target="_blank">Online: Sundays 11:15am &amp; Wednesdays 6:30pm</a></p>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church</span>
+    <span>Sunday 9:30am &amp; 11am · 925 Bannerman Rd, Tallahassee FL</span>
+  </div>
 </footer>
 
 <script>
 // ── Hamburger ──
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
+document.getElementById('hamburger').addEventListener('click', function() {
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
 });
 
 // ── Load latest sermon ──
