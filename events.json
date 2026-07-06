@@ -1,0 +1,153 @@
+{
+  "_readme": "HOW TO ADD OR UPDATE EVENTS: Each event needs a date (or date_end for multi-day), title, description, category, time, and optionally a url and location. Categories: 'worship', 'students', 'kids', 'adults', 'missions', 'community'. Recurring weekly events use 'recurring: true' — they always show. One-time events show until their date passes. Re-upload this file to HostGator after editing.",
+
+  "recurring": [
+    {
+      "id": "r1",
+      "title": "Sunday Morning Worship",
+      "time": "9:30am & 11:00am",
+      "location": "Sanctuary",
+      "category": "worship",
+      "description": "Join us for two identical worship services every Sunday morning. All are welcome — come as you are.",
+      "url": "visit.html"
+    },
+    {
+      "id": "r2",
+      "title": "Online Service",
+      "time": "11:15am & Wednesdays 6:30pm",
+      "location": "canopyroads.online.church",
+      "category": "worship",
+      "description": "Can't make it in person? Watch live every Sunday at 11:15am and Wednesday evenings at 6:30pm.",
+      "url": "http://canopyroads.online.church"
+    },
+    {
+      "id": "r3",
+      "title": "Converge Student Ministry",
+      "time": "Wednesdays 5:30–8:00pm",
+      "location": "Student Wing",
+      "category": "students",
+      "description": "All 6th–12th graders are invited! Food ($2 pizza / $4 Chick-fil-A), music, message, and small groups. Meal cards available for $20.",
+      "url": "connect.html#students"
+    },
+    {
+      "id": "r4",
+      "title": "CRBC Kids — Sunday Morning",
+      "time": "Sundays 9:30am & 11:00am",
+      "location": "Kids Wing",
+      "category": "kids",
+      "description": "Age-appropriate worship and Bible teaching for children birth through 5th grade during both Sunday services.",
+      "url": "connect.html#children"
+    },
+    {
+      "id": "r5",
+      "title": "Point-to-Point Men's Bible Study",
+      "time": "Mondays 7:00pm",
+      "location": "Lofty Pursuit (7643 N Monroe St)",
+      "category": "adults",
+      "description": "Men's small group Bible study meeting weekly. Contact Konrad.Jonathan@gmail.com for more info.",
+      "url": "connect.html#adults"
+    },
+    {
+      "id": "r6",
+      "title": "Kanvas Women's Bible Study",
+      "time": "Wednesdays 9:30am",
+      "location": "Room A111",
+      "category": "adults",
+      "description": "Women's morning Bible study. Registration required — see the Connect page for the sign-up link.",
+      "url": "connect.html#adults"
+    },
+    {
+      "id": "r7",
+      "title": "Women's Christian Fellowship",
+      "time": "Thursdays 10:00am",
+      "location": "Fellowship Hall",
+      "category": "adults",
+      "description": "A warm gathering for women to connect, study Scripture, and encourage one another.",
+      "url": "connect.html#adults"
+    }
+  ],
+
+  "events": [
+    {
+      "id": "e1",
+      "date": "2026-06-28",
+      "title": "Good News Club",
+      "time": "During Summer Break",
+      "location": "CRBC Campus",
+      "category": "kids",
+      "description": "CEF Good News Club — summer edition for elementary-age children. Fun, faith, and friends.",
+      "url": "connect.html#children"
+    },
+    {
+      "id": "e2",
+      "date": "2026-07-04",
+      "title": "No Converge — Independence Day",
+      "time": "No Wednesday service",
+      "location": "",
+      "category": "students",
+      "description": "No Converge student ministry this week in observance of Independence Day. See you next week!",
+      "url": ""
+    },
+    {
+      "id": "e3",
+      "date": "2026-07-12",
+      "title": "Subzero — Summer Student Event",
+      "time": "TBD",
+      "location": "CRBC Campus",
+      "category": "students",
+      "description": "One of Converge's signature summer events. All middle and high school students welcome — invite a friend!",
+      "url": "connect.html#students"
+    },
+    {
+      "id": "e4",
+      "date": "2026-07-19",
+      "title": "Noodle Games",
+      "time": "TBD",
+      "location": "CRBC Campus",
+      "category": "students",
+      "description": "Summer fun for Converge students. Pool noodles, competition, and chaos. All 6th–12th graders welcome.",
+      "url": "connect.html#students"
+    },
+    {
+      "id": "e5",
+      "date": "2026-07-26",
+      "title": "Water War",
+      "time": "TBD",
+      "location": "CRBC Campus",
+      "category": "students",
+      "description": "Summer water battle for Converge students. Wear clothes you don't mind getting soaked!",
+      "url": "connect.html#students"
+    },
+    {
+      "id": "e6",
+      "date": "2026-08-02",
+      "date_end": "2026-08-09",
+      "title": "VBS 2026",
+      "time": "Details TBA",
+      "location": "CRBC Campus",
+      "category": "kids",
+      "description": "Vacation Bible School 2026 — a week of Bible stories, games, crafts, and music for kids. Registration opens soon.",
+      "url": "connect.html#children"
+    },
+    {
+      "id": "e7",
+      "date": "2026-08-14",
+      "title": "Converge Fall Kickoff",
+      "time": "5:30–8:00pm",
+      "location": "Student Wing",
+      "category": "students",
+      "description": "Converge Student Ministry resumes for the school year. Bring a friend — this is one of our biggest nights of the year!",
+      "url": "connect.html#students"
+    },
+    {
+      "id": "e8",
+      "date": "2026-09-13",
+      "title": "Fall Small Group Launch",
+      "time": "Sunday Morning",
+      "location": "Various rooms",
+      "category": "adults",
+      "description": "New semester for all CRBC small groups. Great time to plug in if you've been looking for a group.",
+      "url": "connect.html#small-groups"
+    }
+  ]
+}

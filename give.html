@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Give | Canopy Roads Baptist Church</title>
+<meta name="description" content="Give online, through the CRBC app, by mail, or in person. Your generosity funds ministry in Tallahassee and around the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:    #1C3A2B;
+  --forest-md: #274F3C;
+  --forest-dk: #122618;
+  --sage:      #5A8A6A;
+  --sage-lt:   #A8C4B0;
+  --cream:     #F7F3EE;
+  --warm:      #FDFAF7;
+  --gold:      #C49A3C;
+  --gold-lt:   #E8D5A3;
+  --text:      #1A1A18;
+  --mid:       #46463F;
+  --muted:     #78786E;
+  --border:    rgba(90,138,106,0.15);
+  --r:         5px;
+  --r-lg:      12px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.65; }
+
+/* ─── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--forest); height: 64px; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,.32);
+}
+.nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
+.nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-lt); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+.nav-links a { color: var(--sage-lt); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: var(--r); font-weight: 600 !important; font-size: .8rem !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
+  .hamburger { display: flex; }
+}
+
+/* ─── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  background: var(--forest-dk);
+  min-height: 82vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 800px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
+
+/* Left — scripture + CTA */
+.hero-left {
+  padding: 5rem 3.5rem 5rem 2rem;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+@media (max-width: 800px) { .hero-left { padding: 3.5rem 2rem 2.5rem; order: 1; } }
+
+.hero-eyebrow {
+  font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: .65rem;
+}
+.hero-eyebrow::after { content: ''; display: block; width: 28px; height: 1px; background: rgba(196,154,60,.5); }
+
+.hero-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: .9rem;
+}
+.hero-quote em { font-style: normal; color: var(--gold-lt); }
+
+.hero-ref {
+  font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+  color: var(--sage-lt); text-transform: uppercase; margin-bottom: 2.25rem;
+}
+
+.hero-body {
+  font-size: .97rem; color: rgba(255,255,255,.72);
+  line-height: 1.75; max-width: 440px; margin-bottom: 2.25rem;
+}
+
+.hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: var(--gold); color: var(--forest-dk);
+  padding: .85rem 2rem; border-radius: var(--r);
+  font-weight: 700; font-size: 1rem; text-decoration: none;
+  transition: background .2s, transform .15s; letter-spacing: .01em;
+}
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .55rem;
+  border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+  padding: .85rem 1.75rem; border-radius: var(--r);
+  font-weight: 600; font-size: .95rem; text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.06); }
+
+/* Right — ways to give cards stacked vertically */
+.hero-right {
+  background: rgba(255,255,255,.04);
+  border-left: 1px solid rgba(168,196,176,.1);
+  padding: 4rem 2.5rem 4rem 2rem;
+  display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+}
+@media (max-width: 800px) { .hero-right { order: 2; border-left: none; border-top: 1px solid rgba(168,196,176,.12); padding: 2.5rem 2rem; } }
+
+.give-method-label {
+  font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: .5rem;
+}
+
+.method-card {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(168,196,176,.14);
+  border-radius: var(--r-lg); padding: 1.35rem 1.5rem;
+  display: flex; gap: 1.1rem; align-items: flex-start;
+  text-decoration: none; color: inherit;
+  transition: background .18s, border-color .18s, transform .15s;
+  position: relative;
+}
+.method-card:hover { background: rgba(255,255,255,.1); border-color: rgba(168,196,176,.3); transform: translateX(3px); }
+.method-card.featured { border-color: rgba(196,154,60,.45); background: rgba(196,154,60,.06); }
+.method-card.featured:hover { border-color: var(--gold); }
+
+.method-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1.2rem;
+}
+.method-icon.gold-bg  { background: rgba(196,154,60,.2); }
+.method-icon.sage-bg  { background: rgba(90,138,106,.2); }
+.method-icon.white-bg { background: rgba(255,255,255,.1); }
+
+.method-body { flex: 1; }
+.method-title { font-weight: 700; font-size: .97rem; color: #fff; margin-bottom: .2rem; }
+.method-desc { font-size: .82rem; color: var(--sage-lt); line-height: 1.55; }
+.method-action {
+  margin-top: .6rem; display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .78rem; font-weight: 700; color: var(--gold);
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.method-arrow { font-size: .7rem; transition: transform .2s; }
+.method-card:hover .method-arrow { transform: translateX(3px); }
+
+.method-badge {
+  position: absolute; top: -.6rem; right: 1rem;
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--gold); color: var(--forest-dk); padding: .2rem .65rem; border-radius: 999px;
+}
+
+/* Decorative canopy silhouette in hero bg */
+.hero-canopy {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+  pointer-events: none; opacity: .3; z-index: 1;
+}
+
+/* ─── WAYS SECTION ─────────────────────────────────────────────── */
+.ways-section { background: var(--warm); padding: 5rem 2rem; }
+.ways-inner { max-width: 1000px; margin: 0 auto; }
+.section-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); margin-bottom: .5rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--forest); margin-bottom: .75rem; line-height: 1.2; }
+.section-sub { font-size: .95rem; color: var(--mid); max-width: 520px; line-height: 1.7; margin-bottom: 2.75rem; }
+
+.ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 700px) { .ways-grid { grid-template-columns: 1fr; } }
+
+.way-card {
+  background: var(--cream); border: 1.5px solid var(--border); border-radius: var(--r-lg);
+  padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: .6rem;
+  transition: box-shadow .2s, transform .15s, border-color .2s;
+}
+.way-card:hover { box-shadow: 0 8px 28px rgba(28,58,43,.1); transform: translateY(-2px); border-color: var(--sage-lt); }
+.way-card-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: .35rem;
+}
+.way-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--forest); }
+.way-card p { font-size: .875rem; color: var(--mid); line-height: 1.65; flex: 1; }
+.way-card a {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .82rem; font-weight: 700; color: var(--sage);
+  text-decoration: none; transition: color .2s;
+  margin-top: .25rem;
+}
+.way-card a:hover { color: var(--forest); }
+
+/* ─── THEOLOGY STRIP ────────────────────────────────────────────── */
+.theology-strip {
+  background: var(--forest); color: #fff;
+  padding: 4.5rem 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  max-width: 100%;
+}
+@media (max-width: 700px) { .theology-strip { grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 2rem; } }
+.theology-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+@media (max-width: 700px) { .theology-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+.theology-left {}
+.theology-right {}
+
+.theology-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; line-height: 1.25;
+}
+.theology-left p { font-size: .93rem; color: rgba(255,255,255,.72); line-height: 1.75; margin-bottom: 1rem; }
+.theology-left p + p { margin-top: .75rem; }
+
+.theology-verse-block {
+  border-left: 3px solid var(--gold); padding: 1rem 1.4rem;
+  background: rgba(255,255,255,.05); border-radius: 0 var(--r) var(--r) 0;
+}
+.theology-verse-block blockquote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.05rem; color: var(--gold-lt); line-height: 1.6; margin-bottom: .4rem;
+}
+.theology-verse-block cite { font-size: .75rem; color: var(--sage-lt); font-style: normal; font-weight: 600; letter-spacing: .08em; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.stat-card {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(168,196,176,.14);
+  border-radius: var(--r-lg); padding: 1.35rem 1.25rem;
+}
+.stat-card .stat-num {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700;
+  color: var(--gold-lt); line-height: 1; margin-bottom: .3rem;
+}
+.stat-card .stat-label { font-size: .8rem; color: var(--sage-lt); line-height: 1.45; }
+
+/* ─── FAQ ACCORDION ─────────────────────────────────────────────── */
+.faq-section { padding: 5rem 2rem; background: var(--cream); }
+.faq-inner { max-width: 700px; margin: 0 auto; }
+
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 1.2rem 0; display: flex; justify-content: space-between; align-items: center;
+  text-align: left; gap: 1rem; font-family: 'Inter', sans-serif;
+}
+.faq-q-text { font-weight: 600; font-size: .95rem; color: var(--forest); }
+.faq-chevron { color: var(--sage); font-size: .8rem; transition: transform .25s; flex-shrink: 0; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height .35s ease;
+}
+.faq-a-inner { padding: 0 0 1.2rem; font-size: .9rem; color: var(--mid); line-height: 1.75; }
+.faq-a-inner a { color: var(--sage); font-weight: 600; text-decoration: none; }
+.faq-a-inner a:hover { color: var(--forest); }
+.faq-item.open .faq-a { max-height: 400px; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
+footer { background: var(--forest); color: var(--sage-lt); padding: 3.5rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.1); }
+.footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
+@media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
+.footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
+.footer-col a { display: block; color: var(--sage-lt); text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: 1000px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    Canopy Roads Baptist
+    <small>Tallahassee, Florida</small>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html">Ministries</a></li>
+    <li><a href="media.html">Sermons</a></li>
+    <li><a href="calendar.html">Events</a></li>
+    <li><a href="give.html" class="active">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">First visit?</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- Background canopy -->
+  <svg class="hero-canopy" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,100 L0,60 Q100,25 200,55 Q300,15 420,50 Q530,10 640,48 Q750,10 860,50 Q970,18 1080,52 Q1190,20 1300,55 Q1380,40 1440,48 L1440,100Z" fill="rgba(43,87,65,0.4)"/>
+    <path d="M0,100 L0,78 Q180,55 360,78 Q540,55 720,78 Q900,55 1080,78 Q1260,58 1440,74 L1440,100Z" fill="rgba(28,58,43,0.6)"/>
+  </svg>
+
+  <!-- Left: scripture + CTA -->
+  <div class="hero-left">
+    <p class="hero-eyebrow">Giving at Canopy Roads</p>
+
+    <p class="hero-quote">
+      "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for <em>God loves a cheerful giver.</em>"
+    </p>
+    <p class="hero-ref">2 Corinthians 9:7</p>
+
+    <p class="hero-body">
+      Your generosity is more than a transaction — it's an act of worship and a declaration of trust. Giving at CRBC funds ministry in Tallahassee and around the world, from Sunday services to global missions.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-gold" href="https://canopyroads.tpsdb.com/Give/giving-at-canopy-roads" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        Give Online Now
+      </a>
+      <a class="btn-ghost" href="https://apps.apple.com/us/app/canopy-roads-baptist-church/id1508367050" target="_blank" rel="noopener">Give via App</a>
+    </div>
+  </div>
+
+  <!-- Right: method cards -->
+  <div class="hero-right">
+    <p class="give-method-label">Ways to Give</p>
+
+    <a class="method-card featured" href="https://canopyroads.tpsdb.com/Give/giving-at-canopy-roads" target="_blank" rel="noopener">
+      <span class="method-badge">Easiest</span>
+      <div class="method-icon gold-bg">💳</div>
+      <div class="method-body">
+        <div class="method-title">Give Online</div>
+        <div class="method-desc">One-time or recurring. Debit, credit, or bank transfer. Secure and immediate.</div>
+        <div class="method-action">Give now <span class="method-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a class="method-card" href="https://apps.apple.com/us/app/canopy-roads-baptist-church/id1508367050" target="_blank" rel="noopener">
+      <div class="method-icon sage-bg">📱</div>
+      <div class="method-body">
+        <div class="method-title">CRBC App</div>
+        <div class="method-desc">Give directly through the Canopy Roads app on iPhone or Android — same security, no browser required.</div>
+        <div class="method-action">Get the app <span class="method-arrow">→</span></div>
+      </div>
+    </a>
+
+    <div class="method-card">
+      <div class="method-icon white-bg">🏛️</div>
+      <div class="method-body">
+        <div class="method-title">In Person — Sunday</div>
+        <div class="method-desc">Offering envelopes and giving boxes are available at both the 9:30am and 11am services each Sunday.</div>
+      </div>
+    </div>
+
+    <div class="method-card">
+      <div class="method-icon white-bg">✉️</div>
+      <div class="method-body">
+        <div class="method-title">By Mail</div>
+        <div class="method-desc">Make checks payable to Canopy Roads Baptist Church and mail to 925 Bannerman Rd, Tallahassee, FL 32312.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── OTHER WAYS TO CONTRIBUTE ────────────────────────────────── -->
+<section class="ways-section">
+  <div class="ways-inner">
+    <p class="section-eyebrow">More than money</p>
+    <h2 class="section-title">Contribute your time &amp; talents too</h2>
+    <p class="section-sub">Giving doesn't begin and end with finances. The overflow of a fully devoted life is generous service — sharing your time, skills, and energy with the people around you.</p>
+
+    <div class="ways-grid">
+
+      <div class="way-card">
+        <div class="way-card-icon" style="background:rgba(196,154,60,.12);">🙌</div>
+        <h3>Serve on Sundays</h3>
+        <p>Our Sunday experience runs on volunteers — parking, kids ministry, tech, hospitality, worship team. If you've been attending a while, this is your next step.</p>
+        <a href="connect.html">Find a place to serve →</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-card-icon" style="background:rgba(90,138,106,.12);">🌍</div>
+        <h3>Missions &amp; Change</h3>
+        <p>We believe the church is sent, not just gathered. Support local outreach and global missions by giving your time or finances to our Change initiative.</p>
+        <a href="mission.html" target="_blank" rel="noopener">Learn about Change →</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-card-icon" style="background:rgba(28,58,43,.08);">👐</div>
+        <h3>Volunteer in Ministry</h3>
+        <p>From Converge students to preschool care to small group leadership — every ministry at CRBC depends on people who show up and give themselves.</p>
+        <a href="connect.html">Explore ministries →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── THEOLOGY STRIP ────────────────────────────────────────────── -->
+<section style="background:var(--forest); padding:5rem 2rem;">
+  <div class="theology-inner" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:1rem;line-height:1.25;">Why we give</h2>
+      <p style="font-size:.93rem;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:.9rem;">
+        Canopy Roads was planted in 1996 with a single vision: to help unchurched people become fully devoted followers of Christ. For nearly 30 years your generosity has funded Sunday services, children's ministry, student programs, community outreach, and global missions.
+      </p>
+      <p style="font-size:.93rem;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:1.5rem;">
+        We believe giving is an act of worship — a tangible declaration that God is first. We steward every dollar with accountability, intentionality, and gratitude. Questions about how we use funds? Contact us at <a href="mailto:alicia@canopyroads.org" style="color:var(--sage-lt);">alicia@canopyroads.org</a>.
+      </p>
+      <div class="theology-verse-block" style="border-left:3px solid var(--gold);padding:1rem 1.4rem;background:rgba(255,255,255,.05);border-radius:0 5px 5px 0;">
+        <blockquote style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--gold-lt);line-height:1.6;margin-bottom:.4rem;">
+          "Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing."
+        </blockquote>
+        <cite style="font-size:.75rem;color:var(--sage-lt);font-style:normal;font-weight:600;letter-spacing:.08em;">Proverbs 3:9–10</cite>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">1996</div>
+        <div class="stat-label">Year Canopy Roads was planted in Tallahassee</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Sunday services reaching our community each week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Small groups meeting weekly across the church</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">S.E.N.T.</div>
+        <div class="stat-label">Our vision: rooted locally, sent to the world</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <p class="section-eyebrow" style="color:var(--sage);margin-bottom:.4rem;">Common questions</p>
+    <h2 class="section-title" style="margin-bottom:2rem;">Giving FAQ</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">Is my online gift secure?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Yes. Online giving is processed through our secure giving portal at <a href="https://canopyroads.tpsdb.com/Give/giving-at-canopy-roads" target="_blank" rel="noopener">canopyroads.tpsdb.com</a>. Your payment information is encrypted and never stored on our church servers. You can also give through the CRBC App, which uses the same secure system.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">Can I set up recurring giving?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Yes — the online giving portal lets you set up weekly, bi-weekly, or monthly recurring gifts. This is a great option for regular tithers who want giving to happen automatically. You can modify or cancel anytime by logging in to your donor account.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">Will I receive a giving statement for taxes?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Yes. Canopy Roads is a 501(c)(3) nonprofit organization. Year-end giving statements are provided for all recorded contributions. If you give online, your statement will be available through your donor account. For questions about your giving record, contact <a href="mailto:alicia@canopyroads.org">alicia@canopyroads.org</a>.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">What percentage of my gift goes to local ministry vs. missions?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">General fund gifts support all CRBC ministries — Sunday services, children's programs, student ministry, staff, and facilities. A portion of every general fund dollar supports cooperative missions through the Southern Baptist Convention. If you'd like to designate a gift specifically to missions or another ministry, you can do so when giving online. Questions? Email <a href="mailto:alicia@canopyroads.org">alicia@canopyroads.org</a>.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">Can I give stocks, real estate, or other non-cash assets?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">We gratefully accept non-cash gifts including stocks and securities. Please reach out to our financial administrator at <a href="mailto:alicia@canopyroads.org">alicia@canopyroads.org</a> to discuss how we can receive and process your gift in a way that's most beneficial for you.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-q-text">I'm new to CRBC — should I be giving?</span>
+        <span class="faq-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Welcome! There's no obligation to give as you're getting to know us. Giving is something we encourage as an act of worship and discipleship — it's a step many people take once they feel at home here. No pressure, ever. If you have questions about our church, the best first step is <a href="visit.html">planning your visit</a> or just showing up on a Sunday.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.15rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="team.html">Meet Our Team</a>
+      <a href="mission.html" target="_blank">Mission &amp; Vision</a>
+      <a href="visit.html">Plan Your Visit</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">Ministries</a>
+      <a href="media.html">Sermons</a>
+      <a href="calendar.html">Events</a>
+      <a href="http://canopyroads.online.church" target="_blank">Church Online</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee FL 32312</a>
+      <a href="mailto:alicia@canopyroads.org">Giving questions</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church · 501(c)(3) Nonprofit</span>
+    <span>Contributions are tax-deductible to the extent permitted by law</span>
+  </div>
+</footer>
+
+<script>
+// Nav hamburger
+document.getElementById('hamburger').addEventListener('click', function() {
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    // open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+</script>
+</body>
+</html>

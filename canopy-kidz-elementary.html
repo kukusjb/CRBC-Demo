@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canopy Kidz Elementary | Canopy Roads Baptist Church</title>
+<meta name="description" content="Canopy Kidz Elementary — Sunday mornings for Kindergarten through 5th grade at Canopy Roads Baptist Church. Engaging Bible teaching, small groups, and a safe place for kids to grow in faith.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:    #1C3A2B;
+  --forest-md: #274F3C;
+  --sage:      #5A8A6A;
+  --sage-lt:   #A8C4B0;
+  --sage-pale: #E4EFE7;
+  --cream:     #F7F3EE;
+  --warm:      #FDFAF7;
+  --gold:      #C49A3C;
+  --gold-lt:   #E8D5A3;
+  --text:      #1A1A18;
+  --mid:       #46463F;
+  --muted:     #78786E;
+  --border:    rgba(90,138,106,0.14);
+  --r:         6px;
+  --r-lg:      14px;
+  --r-xl:      20px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.65; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--forest); height: 64px; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+}
+.nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
+.nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-lt); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+.nav-links a { color: var(--sage-lt); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: var(--r); font-weight: 600 !important; font-size: .8rem !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
+  .hamburger { display: flex; }
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--forest);
+  padding: 5rem 2rem 0;
+  overflow: hidden;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; left: -60px;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,138,106,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: end;
+}
+@media (max-width: 820px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.hero-text { padding-bottom: 4rem; }
+
+.hero-breadcrumb {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--sage-lt); margin-bottom: 1.25rem;
+}
+.hero-breadcrumb a { color: var(--sage-lt); text-decoration: none; transition: color .2s; }
+.hero-breadcrumb a:hover { color: #fff; }
+.hero-breadcrumb span { color: rgba(168,196,176,.4); }
+
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(196,154,60,.18); border: 1px solid rgba(196,154,60,.35);
+  border-radius: 999px; padding: .3rem .9rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.25rem;
+}
+.hero-kicker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+h1.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: #fff; line-height: 1.15; margin-bottom: 1rem;
+}
+h1.hero-title em { font-style: italic; color: var(--gold-lt); }
+
+.hero-desc {
+  font-size: .97rem; color: var(--sage-lt); line-height: 1.75;
+  max-width: 430px; margin-bottom: 2rem;
+}
+
+.hero-quick-info { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2.25rem; }
+.quick-info-row {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .88rem; color: rgba(255,255,255,.85);
+}
+.quick-info-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(90,138,106,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; flex-shrink: 0;
+}
+.quick-info-row strong { color: #fff; }
+
+.hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--gold); color: var(--forest);
+  padding: .75rem 1.6rem; border-radius: var(--r);
+  font-weight: 700; font-size: .92rem; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.btn-ghost-lt {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.85);
+  padding: .72rem 1.4rem; border-radius: var(--r);
+  font-weight: 500; font-size: .88rem; text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.btn-ghost-lt:hover { border-color: rgba(255,255,255,.65); background: rgba(255,255,255,.06); }
+
+/* Hero right — Sunday schedule card */
+.hero-schedule {
+  background: var(--warm); border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: 2.25rem 2rem 0; align-self: end;
+  box-shadow: 0 -8px 40px rgba(0,0,0,.25);
+}
+@media (max-width: 820px) { .hero-schedule { border-radius: var(--r-xl); margin-bottom: 2rem; padding-bottom: 2rem; } }
+
+.schedule-label {
+  font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 1.25rem; display: flex; align-items: center; gap: .6rem;
+}
+.schedule-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.schedule-timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: .85rem 0; border-bottom: 1px solid var(--border); position: relative;
+}
+.timeline-item:last-child { border-bottom: none; }
+/* Connector line between steps */
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute; left: 15px; top: 46px;
+  width: 2px; height: calc(100% - 26px);
+  background: var(--border);
+}
+.tl-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--sage-pale); border: 1.5px solid rgba(90,138,106,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; flex-shrink: 0; margin-top: 2px;
+  position: relative; z-index: 1;
+}
+.tl-body {}
+.tl-time {
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .15rem;
+}
+.tl-title { font-weight: 700; font-size: .9rem; color: var(--forest); margin-bottom: .2rem; }
+.tl-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+.online-link-row {
+  display: flex; align-items: center; gap: .6rem;
+  background: var(--sage-pale); border-radius: var(--r);
+  padding: .65rem .9rem; margin-top: 1.1rem;
+}
+.online-link-row span { font-size: .78rem; color: var(--forest); font-weight: 600; }
+.online-link-row a { font-size: .78rem; font-weight: 700; color: var(--sage); text-decoration: none; margin-left: auto; }
+.online-link-row a:hover { color: var(--forest); }
+
+/* ── TRUST BAR ── */
+.trust-bar { background: var(--forest-md); padding: 1.5rem 2rem; }
+.trust-bar-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+}
+.trust-item {
+  display: flex; align-items: center; gap: .65rem;
+  font-size: .82rem; color: rgba(255,255,255,.9); font-weight: 500;
+}
+.trust-icon { font-size: 1.1rem; }
+.trust-item strong { color: #fff; }
+
+/* ── SHARED ── */
+.container { max-width: 1040px; margin: 0 auto; }
+.section-eyebrow { font-size: .67rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--sage); margin-bottom: .4rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.8vw, 2.1rem); color: var(--forest); line-height: 1.2; }
+
+/* ── WHAT TO EXPECT ── */
+.expect-section { padding: 5rem 2rem; background: var(--cream); }
+.expect-header { max-width: 560px; margin-bottom: 3rem; }
+.expect-header p { font-size: .93rem; color: var(--mid); line-height: 1.75; margin-top: .75rem; }
+
+.expect-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+@media (max-width: 640px) { .expect-grid { grid-template-columns: 1fr; } }
+
+.exp-card {
+  background: var(--warm); border: 1.5px solid var(--border);
+  border-radius: var(--r-lg); padding: 1.75rem 1.5rem;
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: box-shadow .2s, transform .15s, border-color .2s;
+}
+.exp-card:hover { box-shadow: 0 6px 24px rgba(28,58,43,.09); transform: translateY(-2px); border-color: var(--sage-lt); }
+.exp-card-icon {
+  width: 52px; height: 52px; border-radius: var(--r-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.exp-card h3 { font-weight: 700; font-size: 1rem; color: var(--forest); margin-bottom: .35rem; }
+.exp-card p { font-size: .86rem; color: var(--mid); line-height: 1.65; }
+.exp-card a {
+  display: inline-flex; align-items: center; gap: .3rem;
+  margin-top: .6rem; font-size: .8rem; font-weight: 700;
+  color: var(--sage); text-decoration: none; transition: color .2s;
+}
+.exp-card a:hover { color: var(--forest); }
+
+/* ── CURRICULUM ── */
+.curriculum-section { background: var(--forest); padding: 5rem 2rem; }
+.curriculum-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+@media (max-width: 720px) { .curriculum-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.curriculum-text .section-eyebrow { color: var(--gold); }
+.curriculum-text .section-title { color: var(--cream); margin-bottom: 1rem; }
+.curriculum-text p { font-size: .92rem; color: rgba(255,255,255,.72); line-height: 1.75; margin-bottom: .85rem; }
+.curriculum-text a.learn-more {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .85rem; font-weight: 700;
+  color: var(--gold-lt); text-decoration: none;
+  border-bottom: 1.5px solid rgba(196,154,60,.4); padding-bottom: 1px;
+  transition: border-color .2s, color .2s;
+}
+.curriculum-text a.learn-more:hover { border-color: var(--gold-lt); color: #fff; }
+
+.curriculum-card {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(168,196,176,.16);
+  border-radius: var(--r-xl); padding: 2rem 1.75rem;
+}
+.curriculum-logo-area {
+  width: 72px; height: 72px; border-radius: var(--r-lg);
+  background: rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; margin-bottom: 1.25rem;
+}
+.curriculum-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: .5rem; }
+.curriculum-card p { font-size: .85rem; color: var(--sage-lt); line-height: 1.65; margin-bottom: 1.5rem; }
+.curriculum-pillars { display: flex; flex-direction: column; gap: .65rem; }
+.pillar {
+  display: flex; align-items: flex-start; gap: .75rem;
+  font-size: .84rem; color: rgba(255,255,255,.8); line-height: 1.5;
+}
+.pillar-icon {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: rgba(196,154,60,.2); border: 1px solid rgba(196,154,60,.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; flex-shrink: 0; margin-top: 1px;
+}
+
+/* ── PROGRAMS ── */
+.programs-section { padding: 5rem 2rem; background: var(--warm); }
+.programs-header { max-width: 600px; margin-bottom: 3rem; }
+.programs-header p { font-size: .93rem; color: var(--mid); line-height: 1.75; margin-top: .75rem; }
+
+.programs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+@media (max-width: 680px) { .programs-grid { grid-template-columns: 1fr; } }
+
+.program-card {
+  background: var(--cream); border: 1.5px solid var(--border);
+  border-radius: var(--r-xl); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .2s, transform .15s;
+}
+.program-card:hover { box-shadow: 0 8px 28px rgba(28,58,43,.1); transform: translateY(-2px); }
+
+.program-card-band {
+  padding: 1.5rem 1.5rem 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.program-card-band.gnc  { background: var(--forest); }
+.program-card-band.vbs  { background: #5a3a8a; }
+
+.program-band-icon { font-size: 1.75rem; flex-shrink: 0; }
+.program-band-name {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem;
+  color: #fff; line-height: 1.2;
+}
+.program-band-tag {
+  margin-left: auto; flex-shrink: 0;
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9); padding: .2rem .6rem; border-radius: 999px;
+}
+
+.program-body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.program-detail {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .78rem; color: var(--muted); margin-bottom: .85rem; font-weight: 500;
+}
+.program-detail-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.program-body p { font-size: .875rem; color: var(--mid); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+.program-actions { display: flex; flex-direction: column; gap: .5rem; }
+.prog-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  background: var(--forest); color: #fff;
+  padding: .6rem 1.25rem; border-radius: var(--r);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: background .2s;
+}
+.prog-btn-primary:hover { background: var(--forest-md); }
+.prog-btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  border: 1.5px solid var(--border); color: var(--mid);
+  padding: .55rem 1.25rem; border-radius: var(--r);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.prog-btn-secondary:hover { border-color: var(--sage); color: var(--forest); }
+
+/* ── UPCOMING EVENTS ── */
+.events-section { padding: 5rem 2rem; background: var(--cream); }
+.events-header { max-width: 560px; margin-bottom: 2.5rem; }
+
+.events-list { display: flex; flex-direction: column; gap: .6rem; max-width: 780px; }
+.event-row {
+  background: var(--warm); border: 1.5px solid var(--border);
+  border-radius: var(--r-lg); padding: 1.1rem 1.35rem;
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: border-color .15s, box-shadow .15s;
+}
+.event-row:hover { border-color: var(--sage-lt); box-shadow: 0 4px 16px rgba(28,58,43,.07); }
+.event-date-block {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 52px; height: 56px;
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 10px; flex-shrink: 0;
+}
+.event-date-block .ev-mon {
+  font-size: .6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--gold); line-height: 1;
+}
+.event-date-block .ev-day {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem; font-weight: 700; color: var(--forest); line-height: 1.1;
+}
+.event-date-block.recurring .ev-mon { color: var(--sage); }
+.event-date-block.recurring .ev-day { font-size: .85rem; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--mid); }
+.event-info { flex: 1; }
+.event-title { font-weight: 700; font-size: .95rem; color: var(--forest); margin-bottom: .2rem; }
+.event-meta { font-size: .8rem; color: var(--muted); margin-bottom: .35rem; }
+.event-desc { font-size: .84rem; color: var(--mid); line-height: 1.6; }
+.event-desc a { color: var(--sage); font-weight: 600; text-decoration: none; }
+.event-desc a:hover { color: var(--forest); }
+.event-cat {
+  flex-shrink: 0; align-self: flex-start;
+  font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  padding: .2rem .6rem; border-radius: 999px;
+}
+.cat-recurring { background: rgba(90,138,106,.12); color: var(--sage); }
+.cat-upcoming  { background: rgba(196,154,60,.12); color: #7a5a10; }
+.cat-special   { background: rgba(90,58,138,.1);   color: #5a3a8a; }
+
+/* ── SUMMER CALLOUT ── */
+.summer-section { background: var(--sage-pale); padding: 4rem 2rem; }
+.summer-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;
+}
+.summer-icon-block {
+  width: 80px; height: 80px; border-radius: var(--r-xl);
+  background: var(--sage); display: flex; align-items: center; justify-content: center;
+  font-size: 2.25rem; flex-shrink: 0;
+}
+.summer-text { flex: 1; min-width: 240px; }
+.summer-text .section-eyebrow { margin-bottom: .3rem; }
+.summer-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); color: var(--forest); margin-bottom: .6rem; line-height: 1.25; }
+.summer-text p { font-size: .9rem; color: var(--mid); line-height: 1.7; }
+.summer-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--forest); color: #fff;
+  padding: .8rem 1.6rem; border-radius: var(--r);
+  font-weight: 700; font-size: .9rem; text-decoration: none;
+  transition: background .2s, transform .15s; white-space: nowrap;
+}
+.summer-btn:hover { background: var(--forest-md); transform: translateY(-2px); }
+
+/* ── SOCIAL ── */
+.social-strip { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2rem; }
+.social-inner { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.social-label { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+.social-links { display: flex; gap: .75rem; }
+.social-link {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .45rem 1rem; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--cream);
+  font-size: .8rem; font-weight: 600; color: var(--forest); text-decoration: none;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+.social-link:hover { background: var(--forest); color: #fff; border-color: var(--forest); transform: translateY(-1px); }
+.social-link svg { flex-shrink: 0; }
+
+/* ── CONTACT ── */
+.contact-section { padding: 5rem 2rem; background: var(--cream); }
+.contact-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+}
+@media (max-width: 720px) { .contact-inner { grid-template-columns: 1fr; } }
+
+.staff-card { background: var(--warm); border: 1.5px solid var(--border); border-radius: var(--r-xl); overflow: hidden; }
+.staff-card-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top center; display: block; }
+.staff-card-body { padding: 1.5rem; }
+.staff-card-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--forest); margin-bottom: .2rem; }
+.staff-card-role { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); margin-bottom: .85rem; }
+.staff-card-quote { font-size: .88rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+.staff-email {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--forest); color: #fff;
+  padding: .65rem 1.25rem; border-radius: var(--r);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: background .2s;
+}
+.staff-email:hover { background: var(--forest-md); }
+
+.newsletter-card {
+  background: var(--forest); border-radius: var(--r-xl); padding: 2.25rem 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.newsletter-icon { font-size: 2.5rem; margin-bottom: .25rem; }
+.newsletter-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; line-height: 1.2; }
+.newsletter-card p { font-size: .88rem; color: var(--sage-lt); line-height: 1.7; flex: 1; }
+.newsletter-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--gold); color: var(--forest);
+  padding: .8rem 1.5rem; border-radius: var(--r);
+  font-weight: 700; font-size: .9rem; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.newsletter-divider { border: none; border-top: 1px solid rgba(168,196,176,.15); margin: .25rem 0; }
+.newsletter-social-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sage); margin-bottom: .75rem; }
+.newsletter-social-links { display: flex; gap: .5rem; }
+.nl-social {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(168,196,176,.18);
+  color: var(--sage-lt); text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.nl-social:hover { background: rgba(255,255,255,.16); color: #fff; }
+
+/* ── FOOTER ── */
+footer { background: var(--forest); color: var(--sage-lt); padding: 3.5rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.1); }
+.footer-grid { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
+@media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
+.footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
+.footer-col a { display: block; color: var(--sage-lt); text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: 1040px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    Canopy Roads Baptist
+    <small>Tallahassee, Florida</small>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html">Ministries</a></li>
+    <li><a href="media.html">Sermons</a></li>
+    <li><a href="calendar.html">Events</a></li>
+    <li><a href="give.html">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">First visit?</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-text">
+      <div class="hero-breadcrumb">
+        <a href="connect.html">Ministries</a>
+        <span>›</span>
+        <span>Canopy Kidz Elementary</span>
+      </div>
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        Kindergarten through 5th Grade
+      </div>
+      <h1 class="hero-title">
+        Where <em>elementary kids</em><br>
+        discover the one big story<br>
+        of the Bible
+      </h1>
+      <p class="hero-desc">
+        We exist to help kids experience Jesus in a real and personal way — and to partner with parents to raise children who become fully devoted followers of Christ. Every Sunday is an adventure.
+      </p>
+
+      <div class="hero-quick-info">
+        <div class="quick-info-row">
+          <div class="quick-info-icon">🗓</div>
+          <span>Sundays <strong>9:30am &amp; 11:00am</strong></span>
+        </div>
+        <div class="quick-info-row">
+          <div class="quick-info-icon">📍</div>
+          <span><strong>Building A</strong> · 925 Bannerman Rd, Tallahassee</span>
+        </div>
+        <div class="quick-info-row">
+          <div class="quick-info-icon">🎒</div>
+          <span>Grades <strong>Kindergarten – 5th</strong></span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn-gold" href="mailto:jenna.morris@canopyroads.org">Contact Jenna →</a>
+        <a class="btn-ghost-lt" href="visit.html">Plan your first visit</a>
+      </div>
+    </div>
+
+    <!-- Right: Sunday schedule timeline -->
+    <div class="hero-schedule">
+      <p class="schedule-label">Sunday morning flow</p>
+      <div class="schedule-timeline">
+
+        <div class="timeline-item">
+          <div class="tl-icon">🎟</div>
+          <div class="tl-body">
+            <div class="tl-time">On arrival</div>
+            <div class="tl-title">Check in &amp; get your tag</div>
+            <div class="tl-desc">Volunteers help you check in and give your child a security tag matched to your coded sticker.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-icon">🎤</div>
+          <div class="tl-body">
+            <div class="tl-time">Large group</div>
+            <div class="tl-title">Worship &amp; Bible teaching</div>
+            <div class="tl-desc">Engaging music, games, and Bible story all together — kids love this part.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-icon">👥</div>
+          <div class="tl-body">
+            <div class="tl-time">Small group</div>
+            <div class="tl-title">Dig deeper by grade</div>
+            <div class="tl-desc">Age-grouped classes where kids discuss the lesson, memorize Scripture, and build real friendships.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-icon">🔖</div>
+          <div class="tl-body">
+            <div class="tl-time">Pick-up</div>
+            <div class="tl-title">Show your sticker, take your kid</div>
+            <div class="tl-desc">Your coded sticker is the only way to pick up your child — always safe, always secure.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="online-link-row">
+        <span>🎬 Can't make it in person?</span>
+        <a href="https://www.youtube.com/c/CanopyRoadsBaptistChurch/playlists?view=50&sort=dd&shelf_id=3" target="_blank" rel="noopener">Watch online →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-icon">✅</span><span><strong>Screened volunteers</strong> in every room</span></div>
+    <div class="trust-item"><span class="trust-icon">📡</span><span><strong>Security monitored</strong> facility</span></div>
+    <div class="trust-item"><span class="trust-icon">🔖</span><span><strong>Coded check-in</strong> for pick-up</span></div>
+    <div class="trust-item"><span class="trust-icon">📱</span><span><strong>Parent resources</strong> on the CRBC app</span></div>
+  </div>
+</div>
+
+<!-- ── WHAT TO EXPECT ── -->
+<section class="expect-section" id="expect">
+  <div class="container">
+    <div class="expect-header">
+      <p class="section-eyebrow">What your child will experience</p>
+      <h2 class="section-title">Built for elementary-age kids</h2>
+      <p>Sunday mornings in Canopy Kidz Elementary are designed around how kids this age actually learn — through music, story, activity, and real relationships with consistent adults who know their names.</p>
+    </div>
+
+    <div class="expect-grid">
+
+      <div class="exp-card">
+        <div class="exp-card-icon" style="background:rgba(196,154,60,.12);">🎵</div>
+        <div>
+          <h3>Large Group Worship &amp; Teaching</h3>
+          <p>Every Sunday kicks off with engaging music, games, and a Bible lesson taught in a way that lands with elementary kids. This isn't a lecture — it's an experience. Kids walk out knowing what the story was about and why it matters to them.</p>
+          <a href="https://www.youtube.com/c/CanopyRoadsBaptistChurch/playlists?view=50&sort=dd&shelf_id=3" target="_blank" rel="noopener">Watch recent lessons online →</a>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-card-icon" style="background:rgba(90,138,106,.12);">👥</div>
+        <div>
+          <h3>Small Groups by Grade</h3>
+          <p>After large group, kids move into smaller, grade-level classes where they dig into the lesson, ask questions, memorize Scripture, and build genuine friendships. The same volunteers show up week after week — relationships are the point.</p>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-card-icon" style="background:rgba(28,58,43,.08);">🛡</div>
+        <div>
+          <h3>Safety You Can Count On</h3>
+          <p>Background-screened volunteers, a security-monitored facility, and a coded check-in system work together so you can fully engage in the worship service without a second thought about your child's wellbeing.</p>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-card-icon" style="background:rgba(196,154,60,.1);">📱</div>
+        <div>
+          <h3>Tools for Home</h3>
+          <p>Faith doesn't stop at the church door. The CRBC App includes a dedicated Kids Tile with take-home content, parent discussion guides, and resources to help you continue Sunday's lesson throughout the week.</p>
+          <a href="https://apps.apple.com/us/app/canopy-roads-baptist-church/id1508367050" target="_blank" rel="noopener">Download the CRBC App →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CURRICULUM ── -->
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+
+    <div class="curriculum-text">
+      <p class="section-eyebrow">Curriculum</p>
+      <h2 class="section-title">The Gospel Project for Kids</h2>
+      <p>Every Sunday morning, kids in Canopy Kidz experience the big story of the Bible through The Gospel Project for Kids — a Christ-centered curriculum that reveals God's plan to rescue His people through His Son, Jesus Christ.</p>
+      <p>Kids are immersed in the gospel through every story, theological concept, and call to mission from Genesis to Revelation. The Bible isn't taught as a collection of moral lessons — it's taught as one unified story of redemption, and Jesus is the center of every single lesson.</p>
+      <p>Heart transformation can only take place when a child truly encounters the gospel. That's what this curriculum is designed to do, week after week, year after year.</p>
+      <a class="learn-more" href="https://www.lifeway.com/en/shop/the-gospel-project/kids" target="_blank" rel="noopener">
+        Learn more at lifeway.com →
+      </a>
+    </div>
+
+    <div class="curriculum-card">
+      <div class="curriculum-logo-area">📖</div>
+      <h3>The Gospel Project for Kids</h3>
+      <p>A chronological journey through the whole Bible — designed for kids who are ready to understand the story of Scripture and how it connects to their own lives.</p>
+      <div class="curriculum-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">📜</div>
+          Every lesson is rooted in a specific biblical passage
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✝</div>
+          Jesus is the hero of every story, Old and New Testament
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌍</div>
+          Kids are called to live as missionaries in their schools
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🏠</div>
+          Take-home content helps parents reinforce learning at home
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROGRAMS ── -->
+<section class="programs-section" id="programs">
+  <div class="container">
+    <div class="programs-header">
+      <p class="section-eyebrow">Beyond Sunday mornings</p>
+      <h2 class="section-title">More ways to get involved</h2>
+      <p>Canopy Kidz Elementary extends beyond Sunday services — we take the mission to local schools and go all-in on summer with VBS.</p>
+    </div>
+
+    <div class="programs-grid">
+
+      <!-- Good News Club -->
+      <div class="program-card">
+        <div class="program-card-band gnc">
+          <span class="program-band-icon">🏫</span>
+          <span class="program-band-name">Good News Club®</span>
+          <span class="program-band-tag">Weekly</span>
+        </div>
+        <div class="program-body">
+          <div class="program-detail">
+            Tuesdays 2:50–4:30pm
+            <span class="program-detail-dot"></span>
+            Killearn Lakes Elementary
+          </div>
+          <p>Sponsored by CEF (Child Evangelism Fellowship®), Good News Club is a weekly after-school Bible club for K–5th graders in the community. Kids experience dynamic Bible lessons, engaging songs, inspiring missionary stories, Scripture memory, special prizes, and snacks. It's a missions trip every single week — to a school right down the road. Good News Club resumes in the fall.</p>
+          <div class="program-actions">
+            <a class="prog-btn-primary" href="mailto:Jenna.morris@canopyroads.org">Contact Jenna to volunteer</a>
+            <a class="prog-btn-secondary" href="https://www.canopyroads.org/connect/good-news-club" target="_blank" rel="noopener">Learn more about Good News Club →</a>
+            <a class="prog-btn-secondary" href="https://www.youtube.com/watch?v=GYpSM8n_0xA" target="_blank" rel="noopener">Watch the story →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VBS 2026 -->
+      <div class="program-card">
+        <div class="program-card-band vbs">
+          <span class="program-band-icon">🍀</span>
+          <span class="program-band-name">VBS 2026 — Emerald Crossing</span>
+          <span class="program-band-tag">Summer</span>
+        </div>
+        <div class="program-body">
+          <div class="program-detail">
+            Summer 2026
+            <span class="program-detail-dot"></span>
+            CRBC Campus
+          </div>
+          <p>In a world filled with worry and confusion, kids need to know there is a God who cares for them. This summer, lads and lasses will journey through Ireland's lush landscapes at <em>Emerald Crossing</em> — exploring Psalm 23 and the life of shepherd-king David. Kids will discover how to cross from worry to peace, from fear to faith, and from uncertainty to a firm foundation in God's Word through a relationship with the Good Shepherd.</p>
+          <div class="program-actions">
+            <a class="prog-btn-primary" href="https://www.canopyroads.org/connect/vbs-2026" target="_blank" rel="noopener">Learn more &amp; register →</a>
+            <a class="prog-btn-secondary" href="mailto:jenna.morris@canopyroads.org">Questions? Email Jenna</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── UPCOMING EVENTS ── -->
+<section class="events-section" id="events">
+  <div class="container">
+    <div class="events-header">
+      <p class="section-eyebrow">Coming up</p>
+      <h2 class="section-title">Upcoming events for kids</h2>
+    </div>
+
+    <div class="events-list">
+
+      <div class="event-row">
+        <div class="event-date-block recurring">
+          <div class="ev-mon">Every</div>
+          <div class="ev-day">Tue</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Good News Club at Killearn Lakes Elementary</div>
+          <div class="event-meta">Tuesdays · 2:50–4:30pm · Resumes fall 2026</div>
+          <div class="event-desc">K–5th graders are welcome. Contact <a href="mailto:Jenna.morris@canopyroads.org">Jenna Morris</a> to learn how to volunteer or send your child.</div>
+        </div>
+        <span class="event-cat cat-recurring">Recurring</span>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="ev-mon">Jul</div>
+          <div class="ev-day">5</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Family Worship Sunday</div>
+          <div class="event-meta">Sunday July 5 · 9:30am &amp; 11am · No K–5 classes this week</div>
+          <div class="event-desc">Kids are invited to attend the service with their parents as we highlight the fun from VBS. A great morning to do church together as a family.</div>
+        </div>
+        <span class="event-cat cat-upcoming">Upcoming</span>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date-block">
+          <div class="ev-mon">Summer</div>
+          <div class="ev-day">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">VBS 2026 — Emerald Crossing</div>
+          <div class="event-meta">Summer 2026 · CRBC Campus · Details coming soon</div>
+          <div class="event-desc">A week-long adventure through Ireland exploring Psalm 23 and the Good Shepherd. Registration details at <a href="https://www.canopyroads.org/connect/vbs-2026" target="_blank" rel="noopener">canopyroads.org/connect/vbs-2026</a>.</div>
+        </div>
+        <span class="event-cat cat-special">VBS</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SUMMER CALLOUT ── -->
+<section class="summer-section">
+  <div class="summer-inner">
+    <div class="summer-icon-block">☀️</div>
+    <div class="summer-text">
+      <p class="section-eyebrow">Summer 2026</p>
+      <h2>A full summer of adventures for kids &amp; families</h2>
+      <p>Beyond VBS, we have exciting events planned throughout June and July. Check the full schedule to see what's coming up for your family.</p>
+    </div>
+    <a class="summer-btn" href="https://canva.link/0knm1qxjpp1e5am" target="_blank" rel="noopener">
+      View Summer Schedule →
+    </a>
+  </div>
+</section>
+
+<!-- ── SOCIAL ── -->
+<div class="social-strip">
+  <div class="social-inner">
+    <span class="social-label">Follow Canopy Kidz</span>
+    <div class="social-links">
+      <a class="social-link" href="https://www.facebook.com/CanopyKidz" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </a>
+      <a class="social-link" href="https://www.instagram.com/canopykidz_crbc/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a class="social-link" href="https://www.youtube.com/c/CanopyRoadsBaptistChurch/playlists?view=50&sort=dd&shelf_id=3" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+        YouTube
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div style="margin-bottom:2.5rem;">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">We'd love to connect with your family</h2>
+    </div>
+    <div class="contact-inner">
+
+      <div class="staff-card">
+        <img
+          class="staff-card-photo"
+          src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/46320dfc-0248-4208-a94f-a52ea5397b0c.jpg"
+          alt="Jenna Morris — Children's Director"
+          loading="lazy">
+        <div class="staff-card-body">
+          <div class="staff-card-name">Jenna Morris</div>
+          <div class="staff-card-role">Children's Director</div>
+          <p class="staff-card-quote">"I've loved kids since I was one myself. My greatest passion is sharing the Gospel message with kids on a level they can understand — and seeing them come to know Jesus personally while they're young. Let me know how I can serve your family."</p>
+          <a class="staff-email" href="mailto:jenna.morris@canopyroads.org">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Jenna
+          </a>
+        </div>
+      </div>
+
+      <div class="newsletter-card">
+        <div class="newsletter-icon">📬</div>
+        <h3>Stay in the loop with the Parent Newsletter</h3>
+        <p>Get updates on what's happening in CRBC Kids Ministry — upcoming events, curriculum themes, volunteer opportunities, and family resources — delivered to your inbox.</p>
+        <a class="newsletter-btn" href="https://conta.cc/4uEOOLx" target="_blank" rel="noopener">
+          Read the Parent Newsletter →
+        </a>
+        <hr class="newsletter-divider">
+        <div class="newsletter-social-label">Follow Canopy Kidz</div>
+        <div class="newsletter-social-links">
+          <a class="nl-social" href="https://www.facebook.com/CanopyKidz" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a class="nl-social" href="https://www.instagram.com/canopykidz_crbc/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a class="nl-social" href="https://www.youtube.com/c/CanopyRoadsBaptistChurch/playlists?view=50&sort=dd&shelf_id=3" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#274F3C"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.15rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kids Ministry</h4>
+      <a href="preschool.html">Canopy Kidz Preschool</a>
+      <a href="elementary.html">Canopy Kidz Elementary</a>
+      <a href="https://www.canopyroads.org/connect/good-news-club" target="_blank">Good News Club</a>
+      <a href="https://www.canopyroads.org/connect/vbs-2026" target="_blank">VBS 2026</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">All Ministries</a>
+      <a href="connect.html#students">Converge Students</a>
+      <a href="visit.html">Plan Your Visit</a>
+      <a href="calendar.html">Events</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee, FL 32312</a>
+      <a href="mailto:jenna.morris@canopyroads.org">Email Jenna</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church</span>
+    <span>Sunday 9:30am &amp; 11am · Building A · Kindergarten–5th Grade</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+</script>
+</body>
+</html>

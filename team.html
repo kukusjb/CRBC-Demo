@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Our Team | Canopy Roads Baptist Church</title>
+<meta name="description" content="Meet the pastoral staff and team at Canopy Roads Baptist Church in Tallahassee, FL — the people who lead, serve, and pour into our congregation every week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:    #1C3A2B;
+  --forest-md: #274F3C;
+  --sage:      #5A8A6A;
+  --sage-lt:   #A8C4B0;
+  --cream:     #F7F3EE;
+  --warm:      #FDFAF7;
+  --gold:      #C49A3C;
+  --gold-lt:   #EDD98A;
+  --text:      #1A1A18;
+  --mid:       #46463F;
+  --muted:     #78786E;
+  --border:    rgba(90,138,106,0.14);
+  --radius:    4px;
+  --radius-lg: 12px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.65; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--forest); height: 64px; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+}
+.nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
+.nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-lt); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+.nav-links a { color: var(--sage-lt); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: var(--radius); font-weight: 600 !important; font-size: .8rem !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
+  .hamburger { display: flex; }
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--forest); color: #fff;
+  padding: 4rem 2rem 5rem; text-align: center; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(90,138,106,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Tree canopy silhouette */
+.canopy-bg {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 140px; pointer-events: none;
+}
+.page-header .eyebrow {
+  font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .9rem; position: relative;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.12; margin-bottom: 1rem; position: relative;
+}
+.page-header p { color: var(--sage-lt); font-size: 1rem; max-width: 480px; margin: 0 auto; position: relative; }
+
+/* ── GRID SECTION ── */
+.team-section { max-width: 1080px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+/* divider labels */
+.group-label {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 3rem 0 1.5rem;
+}
+.group-label:first-child { margin-top: 0; }
+.group-label span {
+  font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--sage); white-space: nowrap;
+}
+.group-label::before, .group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.group-label::before { display: none; }
+
+/* Card grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: .25rem;
+}
+
+/* Portrait card */
+.person-card {
+  background: var(--warm); border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; cursor: pointer; transition: box-shadow .2s, transform .15s, border-color .2s;
+  position: relative;
+}
+.person-card:hover { box-shadow: 0 8px 28px rgba(28,58,43,.12); transform: translateY(-2px); border-color: var(--sage-lt); }
+.person-card.active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+
+.card-photo {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+  display: block; background: var(--forest-md);
+}
+.card-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, var(--forest) 0%, var(--forest-md) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-photo-placeholder span { font-size: 3rem; color: var(--sage-lt); font-family: 'Playfair Display', serif; }
+
+.card-body { padding: 1rem 1.1rem 1.1rem; }
+.card-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--forest); line-height: 1.2; margin-bottom: .2rem; }
+.card-title { font-size: .78rem; font-weight: 500; color: var(--sage); letter-spacing: .02em; margin-bottom: .65rem; }
+.card-expand-hint {
+  display: flex; align-items: center; gap: .35rem;
+  font-size: .72rem; font-weight: 600; color: var(--muted); transition: color .15s;
+}
+.person-card:hover .card-expand-hint,
+.person-card.active .card-expand-hint { color: var(--gold); }
+.expand-chevron { font-size: .65rem; transition: transform .25s; display: inline-block; }
+.person-card.active .expand-chevron { transform: rotate(180deg); }
+
+/* ── BIO PANEL ── */
+.bio-panel {
+  background: var(--warm); border: 1.5px solid var(--gold);
+  border-radius: var(--radius-lg); overflow: hidden;
+  max-height: 0; opacity: 0; transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+  margin-bottom: .25rem;
+}
+.bio-panel.open { max-height: 900px; opacity: 1; }
+
+.bio-inner {
+  padding: 2.25rem 2.5rem;
+  display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start;
+}
+@media (max-width: 600px) { .bio-inner { grid-template-columns: 1fr; padding: 1.5rem; } }
+
+.bio-portrait { border-radius: var(--radius-lg); overflow: hidden; }
+.bio-portrait img { width: 100%; display: block; object-fit: cover; object-position: top center; aspect-ratio: 3/4; }
+.bio-portrait .no-photo {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--forest) 0%, var(--forest-md) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; color: var(--sage-lt); font-family: 'Playfair Display', serif;
+}
+
+.bio-content {}
+.bio-name-row { margin-bottom: 1.5rem; }
+.bio-name { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--forest); line-height: 1.15; }
+.bio-role { font-size: .82rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--sage); margin-top: .3rem; }
+
+.bio-text { font-size: .92rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.5rem; }
+.bio-text p + p { margin-top: .9rem; }
+
+.bio-facts { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 1.5rem; margin-bottom: 1.5rem; }
+@media (max-width: 500px) { .bio-facts { grid-template-columns: 1fr; } }
+.bio-fact-label {
+  font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .25rem;
+}
+.bio-fact-value { font-size: .85rem; color: var(--mid); line-height: 1.55; }
+
+.bio-verse {
+  background: var(--cream); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: .85rem 1.1rem; margin-bottom: 1.5rem;
+}
+.bio-verse-label { font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+.bio-verse-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: .95rem; color: var(--forest); line-height: 1.55; }
+
+.bio-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+.bio-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.25rem; border-radius: var(--radius);
+  font-size: .82rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none;
+  transition: background .2s, transform .15s;
+}
+.bio-btn:hover { transform: translateY(-1px); }
+.bio-btn-primary { background: var(--forest); color: #fff; }
+.bio-btn-primary:hover { background: var(--forest-md); }
+.bio-btn-outline { background: transparent; border: 1.5px solid var(--forest); color: var(--forest); }
+.bio-btn-outline:hover { background: var(--forest); color: #fff; }
+
+.bio-close { 
+  display: flex; align-items: center; gap: .35rem;
+  background: none; border: none; cursor: pointer;
+  font-size: .78rem; font-weight: 600; color: var(--muted); padding: 0; transition: color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.bio-close:hover { color: var(--forest); }
+
+/* ── FOOTER ── */
+footer { background: var(--forest); color: var(--sage-lt); padding: 3rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.12); }
+.footer-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
+@media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
+.footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
+.footer-col a { display: block; color: var(--sage-lt); text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: 1080px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    Canopy Roads Baptist
+    <small>Tallahassee, Florida</small>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html">Ministries</a></li>
+    <li><a href="media.html">Sermons</a></li>
+    <li><a href="calendar.html">Events</a></li>
+    <li><a href="https://www.canopyroads.org/contribute" target="_blank">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">First visit?</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <svg class="canopy-bg" viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,140 L0,95 Q60,55 130,80 Q200,30 270,70 Q340,15 420,65 Q490,20 560,62 Q630,10 700,58 Q770,8 840,55 Q910,15 980,58 Q1050,20 1120,65 Q1190,30 1260,72 Q1330,40 1380,78 Q1410,90 1440,82 L1440,140 Z" fill="rgba(43,87,65,0.35)"/>
+    <path d="M0,140 L0,115 Q120,88 240,112 Q360,85 480,110 Q600,88 720,112 Q840,88 960,110 Q1080,88 1200,110 Q1320,90 1440,108 L1440,140 Z" fill="rgba(28,58,43,0.55)"/>
+  </svg>
+  <p class="eyebrow">The people behind the mission</p>
+  <h1>Meet Our Team</h1>
+  <p>Pastors, directors, and staff who serve our congregation and community every week. Click anyone to learn more.</p>
+</section>
+
+<!-- TEAM -->
+<div class="team-section" id="teamSection">
+
+  <!-- PASTORAL STAFF -->
+  <div class="group-label"><span>Pastoral Staff</span></div>
+
+  <div class="team-grid" id="grid-pastoral">
+
+    <div class="person-card" data-id="matt" onclick="toggleBio('matt','after-pastoral')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/8c53ccd6-aed1-4b0c-80a0-512cff3e6602.jpg" alt="Matt Hall" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Matt Hall</div>
+        <div class="card-title">Senior Pastor</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="justin" onclick="toggleBio('justin','after-pastoral')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/3556b662-1551-44c1-adb4-7ea983d0da1f.jpg" alt="Justin Wester" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Justin Wester</div>
+        <div class="card-title">Associate Pastor of Discipleship</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="jayce" onclick="toggleBio('jayce','after-pastoral')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/17db8c9c-85a0-4d3f-b7ba-c585c9c865e4.jpeg" alt="Jayce DuBose" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Jayce DuBose</div>
+        <div class="card-title">Student Pastor</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bio panel for pastoral row -->
+  <div class="bio-panel" id="after-pastoral"></div>
+
+  <!-- MINISTRY DIRECTORS -->
+  <div class="group-label"><span>Ministry Directors</span></div>
+
+  <div class="team-grid" id="grid-directors">
+
+    <div class="person-card" data-id="dustin" onclick="toggleBio('dustin','after-directors')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/445b3bb4-6a42-4944-8354-71d60a322ed5.jpg" alt="Dustin Allen" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Dustin Allen</div>
+        <div class="card-title">Worship Director</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="jenna" onclick="toggleBio('jenna','after-directors')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/46320dfc-0248-4208-a94f-a52ea5397b0c.jpg" alt="Jenna Morris" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Jenna Morris</div>
+        <div class="card-title">Children's Director</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="lindsey" onclick="toggleBio('lindsey','after-directors')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/d6e69712-dbee-4c2c-a8a3-2cfb0b82dcef.jpg" alt="Lindsey Wester" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Lindsey Wester</div>
+        <div class="card-title">Preschool Ministry Associate</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="vance" onclick="toggleBio('vance','after-directors')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/2fef452e-c82c-4bf2-9a70-77f9cdaff46d.jpg" alt="Vance Rutherford" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Vance Rutherford</div>
+        <div class="card-title">Technology Director</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bio-panel" id="after-directors"></div>
+
+  <!-- ADMINISTRATION -->
+  <div class="group-label"><span>Administration</span></div>
+
+  <div class="team-grid" id="grid-admin">
+
+    <div class="person-card" data-id="alicia" onclick="toggleBio('alicia','after-admin')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/b19513e7-6558-4dcb-a47c-4646cd478088.jpg" alt="Alicia Brown" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Alicia Brown</div>
+        <div class="card-title">Financial Administrator</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+    <div class="person-card" data-id="cathy" onclick="toggleBio('cathy','after-admin')" role="button" tabindex="0" aria-expanded="false">
+      <img class="card-photo" src="https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/08df066c-fe08-4a45-8577-8dcdad1a6a67.jpg" alt="Cathy Dangerfield" loading="lazy">
+      <div class="card-body">
+        <div class="card-name">Cathy Dangerfield</div>
+        <div class="card-title">Connections Administrator</div>
+        <div class="card-expand-hint">Read bio <span class="expand-chevron">▾</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bio-panel" id="after-admin"></div>
+
+</div><!-- /team-section -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.15rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="team.html">Meet Our Team</a>
+      <a href="https://www.canopyroads.org/about-us/mission-and-vision" target="_blank">Mission &amp; Vision</a>
+      <a href="visit.html">Plan Your Visit</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">Ministries</a>
+      <a href="media.html">Sermons</a>
+      <a href="calendar.html">Events</a>
+      <a href="http://canopyroads.online.church" target="_blank">Church Online</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee, FL 32312</a>
+      <a href="https://www.canopyroads.org/contribute" target="_blank">Give Online</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church</span>
+    <span>Sunday 9:30am &amp; 11am · 925 Bannerman Rd, Tallahassee FL</span>
+  </div>
+</footer>
+
+<script>
+// ── Nav hamburger ──────────────────────────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', function() {
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+// ── Bio data ──────────────────────────────────────────────────────────────
+const BIOS = {
+  matt: {
+    name: 'Matt Hall',
+    role: 'Senior Pastor',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/8c53ccd6-aed1-4b0c-80a0-512cff3e6602.jpg',
+    bio: [
+      "Matt and his wife Terri have four grown kids (Allyson, Sara, Emily, and Tim) and eight grandchildren. Matt grew up in Midway, Alabama on his family farm. He earned a Bachelor's degree in Animal Science and a Master's degree in Animal Nutrition from Auburn University. Following college, he worked in agricultural banking for ten years with the Federal Land Bank in Alabama.",
+      "He responded to a call to ministry in 1991 and subsequently obtained a Master of Divinity from New Orleans Baptist Theological Seminary. Before coming to Tallahassee, he served as an Associate Pastor at First Baptist Church in Enterprise, Alabama and was a founding staff member of Vaughn Forest Baptist Church in Montgomery, Alabama.",
+      "Matt moved to Tallahassee on July 10, 1996, to plant Canopy Roads Baptist Church — with a vision to start a biblically sound, innovative church to help unchurched people become fully devoted followers of Christ. Canopy Roads held its first service on September 8th at Hawks Rise Elementary and met there for six and a half years before moving to its current location on Bannerman Road in 2002."
+    ],
+    hobbies: "Spending time with family, gardening, grilling, running, backpacking, hunting, and fishing.",
+    tallahassee: "Dinner with my wife Terri at a local seafood or oriental restaurant.",
+    verse: "Matthew 6:33 &amp; Matthew 28:19–20",
+    email: 'matt.hall@canopyroads.org',
+    links: []
+  },
+  justin: {
+    name: 'Justin Wester',
+    role: 'Associate Pastor of Discipleship',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/3556b662-1551-44c1-adb4-7ea983d0da1f.jpg',
+    bio: [
+      "Justin enjoys encouraging followers of Jesus to live like everyday missionaries where they live, work, and play. As the Associate Pastor of Discipleship, he is responsible for the leadership and development of the discipleship ministries at CRBC.",
+      "Justin holds a Doctor of Ministry in Pastoral Leadership from Liberty University Baptist Theological Seminary. He released his first book, <em>Living S.E.N.T. — Discovering How Everyday Habits Can Make an Eternal Difference</em>, in January of 2023. Learn more at <a href='http://justinwester.com' target='_blank' rel='noopener' style='color:var(--sage)'>justinwester.com</a>.",
+      "Justin and his wife Lindsey live in Tallahassee and have four children."
+    ],
+    hobbies: "Playing bluegrass music and fixing small engines.",
+    tallahassee: "Eating at new restaurants and listening to live music.",
+    verse: "Isaiah 41:10",
+    email: 'Justin.wester@canopyroads.org',
+    links: [{ label: 'Book a Meeting', url: 'https://calendly.com/justin-wester' }]
+  },
+  jayce: {
+    name: 'Jayce DuBose',
+    role: 'Student Pastor',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/17db8c9c-85a0-4d3f-b7ba-c585c9c865e4.jpeg',
+    bio: [
+      "Jayce grew up in Perry, FL and joined the team at Canopy Roads in June of 2021. Jayce is married to Candice and together they have four children: Harrison, Chandler, Hallie, and Mila. Jayce has a Bachelor of Arts in Ministry from the Baptist University of Florida and a Master of Divinity from New Orleans Baptist Theological Seminary.",
+      "Before accepting God's call to Canopy Roads, Jayce served for four years as the Student Pastor of Fellowship Baptist Church in Tallahassee.",
+      "Jayce is passionate about students and their families because adolescents are trying to answer the question 'Who am I?' — and Jesus is the only one who can sufficiently answer it. He seeks to come alongside parents as they trust and follow Jesus, so that students will follow Christ as well."
+    ],
+    hobbies: "Spending time with family, working out, running, playing sports, coaching youth sports, and cooking on my smoker. Favorite things: black coffee, books, the color royal blue, and the Florida Gators.",
+    tallahassee: "Running with my kids in the annual Turkey Trot race.",
+    verse: "Galatians 2:20",
+    email: 'Jayce.dubose@canopyroads.org',
+    links: [{ label: 'Converge Calendar', url: 'https://calendar.google.com/calendar/u/0/r?cid=amF5Y2UuZHVib3NlQGNhbm9weXJvYWRzLm9yZw' }]
+  },
+  dustin: {
+    name: 'Dustin Allen',
+    role: 'Worship Director',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/445b3bb4-6a42-4944-8354-71d60a322ed5.jpg',
+    bio: [
+      "Dustin was born and raised in Tallahassee and joined the team at Canopy Roads in September of 2024. He and his wife Kelly can claim that they were middle school sweethearts! They have three children and have been involved in various Christian ministries for many years.",
+      "Dustin's heart for worship has allowed him to tour in Christian bands, lead congregations, and serve in prison ministry. He also writes and records his own music. You can find Dustin on social media as \"Unmitigated Comedy.\"",
+      "Dustin's children attend Community Christian School. He loves the Lord and is excited to use his musical talent to serve at Canopy Roads."
+    ],
+    hobbies: "I'm a foodie and love to try new and different cuisine. I also appreciate a good laugh.",
+    tallahassee: "Spending time with family and watching FSU football.",
+    verse: "Romans 5:8",
+    email: 'dustin.allen@canopyroads.org',
+    links: []
+  },
+  jenna: {
+    name: 'Jenna Morris',
+    role: "Children's Director",
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/46320dfc-0248-4208-a94f-a52ea5397b0c.jpg',
+    bio: [
+      "Jenna, originally from Georgia, became a member at Canopy Roads with her family in 2014. She joined our staff as the Children's Director in August of 2019. She graduated from The Baptist University of Florida in 2015 with a Bachelor of Arts in Elementary Education and holds a Florida teaching license for K–6 grade. Prior to joining the CRBC staff, she taught Kindergarten for three years at DeSoto Trail Elementary here in Tallahassee.",
+      "Jenna tells people she's loved kids since she was one herself. She treasures children just as Jesus does in Matthew 19:14 and felt God's call to children's ministry as a teenager after serving multiple years as a summer missionary. Her greatest passion is sharing the Gospel message with kids on a level they can understand — and seeing them come to know Jesus personally while they're young."
+    ],
+    hobbies: "A good cup of iced coffee, crafting, reading, and spending time with friends, family, and kids whenever I can.",
+    tallahassee: "Long walks in the neighborhood and eating out with my family at our favorite restaurants.",
+    verse: "Psalm 46:1–2 &amp; Matthew 19:14",
+    email: 'jenna.morris@canopyroads.org',
+    links: []
+  },
+  lindsey: {
+    name: 'Lindsey Wester',
+    role: 'Preschool Ministry Associate',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/d6e69712-dbee-4c2c-a8a3-2cfb0b82dcef.jpg',
+    bio: [
+      "Hi! I am so excited to help lead the preschool team at Canopy Roads. My husband Justin and I have four kids — Aiden, Kennedy, Emery, and Anson — so I'm right in the middle of these fun and busy years too! I earned my Master of Arts in Religion with a focus in Apologetics from Liberty Baptist Theological Seminary.",
+      "I have a deep passion for helping children learn about God's love and truth from an early age. It is my heart to not only help little ones grow in their faith, but also to build strong connections with families and create opportunities for volunteers to serve and thrive in ministry. I believe that when we work together, we can lay a beautiful spiritual foundation in the hearts of our kids."
+    ],
+    hobbies: "Trying new restaurants, reading historical fiction, thrifting, and creative adventures with family.",
+    tallahassee: "Picnic at Maclay Gardens or a walk on Lafayette Heritage Trails.",
+    verse: "Zephaniah 3:17",
+    email: 'lindseywester1@gmail.com',
+    links: []
+  },
+  alicia: {
+    name: 'Alicia Brown',
+    role: 'Financial Administrator',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/b19513e7-6558-4dcb-a47c-4646cd478088.jpg',
+    bio: [
+      "Alicia is from Lloyd, Florida where she was born and raised. She and her husband Harry have three children: Jordan, Trey, and Arianna. Alicia has been a member of First Baptist Church of Lloyd since she was a little girl, where she has served in various ministries over many years.",
+      "Alicia has a bachelor's degree in healthcare administration. She joined our staff in the summer of 2025 and brings over 20 years of experience in financial accounting and reporting, budgeting, and project management. She also works full time for a healthcare consulting firm in Tallahassee."
+    ],
+    hobbies: "Cooking, crafting, and fishing — especially saltwater. When she's not out on the boat with family, you'll find her cheering on her kids at their various sports.",
+    tallahassee: "Trying new restaurants with family.",
+    verse: "Galatians 6:9",
+    email: 'alicia@canopyroads.org',
+    links: []
+  },
+  cathy: {
+    name: 'Cathy Dangerfield',
+    role: 'Connections Administrator',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/08df066c-fe08-4a45-8577-8dcdad1a6a67.jpg',
+    bio: [
+      "Cathy, her husband Pete, and their three girls moved to Tallahassee in 2011 from Michigan. They have attended Canopy Roads from the first week they arrived and have been involved ever since. All three of Cathy's girls have graduated from Florida State University and continue to serve and call Canopy Roads home.",
+      "Cathy loves the opportunity she has working with attenders and members at Canopy Roads. Her passion and goal is to welcome every person who walks through our doors and let them know they are accepted and important."
+    ],
+    hobbies: "Hiking with family. She also loves working with her hands doing home renovation projects and repairs.",
+    tallahassee: "Trying new restaurants as well as revisiting old favorites with family.",
+    verse: "Proverbs 3:5–6 &amp; 2 Timothy 1:7",
+    email: 'Cathy.dangerfield@canopyroads.org',
+    links: []
+  },
+  vance: {
+    name: 'Vance Rutherford',
+    role: 'Technology Director',
+    photo: 'https://s3.amazonaws.com/media.cloversites.com/ee/eeaffc28-d596-470d-86d4-36461e8318a1/site-images/2fef452e-c82c-4bf2-9a70-77f9cdaff46d.jpg',
+    bio: [
+      "Vance moved from Panama City to Tallahassee in February of 2000 and started attending Canopy Roads shortly afterwards. He joined the band as a guitar player, then he and his girlfriend Michelle joined the church on Easter Sunday of that year. He and Michelle were married by Pastor Matt in 2001 and have both been involved in the worship ministry ever since.",
+      "Vance has previously served as the Worship Director at Canopy Roads and enjoys working with many fantastic musicians and singers to help lead our congregation in worship. His day job is as the Director of Technology at Community Christian School."
+    ],
+    hobbies: "Building guitars as well as playing them, and tinkering with cars. He dabbles in just about any hobby that lets him make things with his hands.",
+    tallahassee: "Going out to listen to live music, then heading to Lofty Pursuits for ice cream. But as an introvert, I most enjoy staying home and working on my own projects.",
+    verse: "Philippians 4:6–9",
+    email: 'vance.rutherford@gmail.com',
+    links: []
+  }
+};
+
+// ── State ─────────────────────────────────────────────────────────────────
+let activePanelId = null;  // which panel slot is open
+let activePersonId = null; // which person card is highlighted
+
+function buildBioHTML(id) {
+  const d = BIOS[id];
+  const bioParas = d.bio.map(p => `<p>${p}</p>`).join('');
+  const extraLinks = d.links.map(l =>
+    `<a class="bio-btn bio-btn-outline" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+  ).join('');
+  return `
+    <div class="bio-inner">
+      <div class="bio-portrait">
+        <img src="${d.photo}" alt="${d.name}" loading="lazy">
+      </div>
+      <div class="bio-content">
+        <div class="bio-name-row">
+          <div class="bio-name">${d.name}</div>
+          <div class="bio-role">${d.role}</div>
+        </div>
+        <div class="bio-text">${bioParas}</div>
+        <div class="bio-facts">
+          <div>
+            <div class="bio-fact-label">Hobbies &amp; Interests</div>
+            <div class="bio-fact-value">${d.hobbies}</div>
+          </div>
+          <div>
+            <div class="bio-fact-label">Favorite Thing in Tallahassee</div>
+            <div class="bio-fact-value">${d.tallahassee}</div>
+          </div>
+        </div>
+        <div class="bio-verse">
+          <div class="bio-verse-label">Favorite Bible Verse</div>
+          <div class="bio-verse-text">${d.verse}</div>
+        </div>
+        <div class="bio-actions">
+          <a class="bio-btn bio-btn-primary" href="mailto:${d.email}">✉ Email ${d.name.split(' ')[0]}</a>
+          ${extraLinks}
+          <button class="bio-close" onclick="closeBio(event)">✕ Close</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleBio(personId, panelId) {
+  const panel = document.getElementById(panelId);
+  const card = document.querySelector(`[data-id="${personId}"]`);
+
+  // If clicking the same person — close
+  if (activePersonId === personId && activePanelId === panelId) {
+    closePanel(panel);
+    clearActiveCard();
+    activePanelId = null;
+    activePersonId = null;
+    return;
+  }
+
+  // If a different panel is open — close it first
+  if (activePanelId && activePanelId !== panelId) {
+    const oldPanel = document.getElementById(activePanelId);
+    closePanel(oldPanel);
+  }
+
+  // Clear any active card highlight
+  clearActiveCard();
+
+  // Open new panel
+  panel.innerHTML = buildBioHTML(personId);
+  panel.classList.add('open');
+  card.classList.add('active');
+  card.setAttribute('aria-expanded', 'true');
+
+  activePanelId = panelId;
+  activePersonId = personId;
+
+  // Scroll panel into view after a short delay for transition
+  setTimeout(() => {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 80);
+}
+
+function closePanel(panel) {
+  panel.classList.remove('open');
+  // Clear content after transition
+  setTimeout(() => { if (!panel.classList.contains('open')) panel.innerHTML = ''; }, 420);
+}
+
+function clearActiveCard() {
+  if (activePersonId) {
+    const old = document.querySelector(`[data-id="${activePersonId}"]`);
+    if (old) { old.classList.remove('active'); old.setAttribute('aria-expanded', 'false'); }
+  }
+}
+
+function closeBio(e) {
+  e.stopPropagation();
+  if (!activePanelId) return;
+  const panel = document.getElementById(activePanelId);
+  closePanel(panel);
+  clearActiveCard();
+  activePanelId = null;
+  activePersonId = null;
+}
+
+// Keyboard support
+document.querySelectorAll('.person-card').forEach(card => {
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+  });
+});
+</script>
+</body>
+</html>

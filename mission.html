@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission &amp; Vision | Canopy Roads Baptist Church</title>
+<meta name="description" content="Canopy Roads exists to raise up a new generation of Christ followers — living S.E.N.T. as neighborhood and marketplace missionaries in Tallahassee and around the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:    #1C3A2B;
+  --forest-md: #274F3C;
+  --forest-dk: #122618;
+  --sage:      #5A8A6A;
+  --sage-lt:   #A8C4B0;
+  --cream:     #F7F3EE;
+  --warm:      #FDFAF7;
+  --gold:      #C49A3C;
+  --gold-lt:   #E8D5A3;
+  --text:      #1A1A18;
+  --mid:       #46463F;
+  --muted:     #78786E;
+  --border:    rgba(90,138,106,0.14);
+  --r:         5px;
+  --r-lg:      12px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.65; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--forest); height: 64px; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,.32);
+}
+.nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
+.nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-lt); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+.nav-links a { color: var(--sage-lt); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: var(--r); font-weight: 600 !important; font-size: .8rem !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
+  .hamburger { display: flex; }
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--forest-dk);
+  padding: 6rem 2rem 5.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 64px;
+  background: var(--cream);
+  clip-path: ellipse(58% 100% at 50% 100%);
+}
+/* Canopy silhouette */
+.hero-canopy {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 130px; pointer-events: none; opacity: .28;
+}
+.hero-eyebrow {
+  font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem; position: relative;
+}
+.hero-vision {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  line-height: 1.3;
+  color: #fff;
+  max-width: 820px;
+  margin: 0 auto 1.25rem;
+  position: relative;
+}
+.hero-vision em { font-style: normal; color: var(--gold-lt); }
+.hero-sub {
+  font-size: .95rem; color: var(--sage-lt);
+  max-width: 520px; margin: 0 auto 2.5rem;
+  line-height: 1.75; position: relative;
+}
+.hero-links { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--gold); color: var(--forest-dk);
+  padding: .75rem 1.75rem; border-radius: var(--r);
+  font-weight: 700; font-size: .95rem; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.btn-ghost-lt {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid rgba(255,255,255,.28); color: rgba(255,255,255,.85);
+  padding: .75rem 1.5rem; border-radius: var(--r);
+  font-weight: 500; font-size: .9rem; text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.btn-ghost-lt:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.06); }
+
+/* ── SHARED LAYOUT ── */
+.container { max-width: 1040px; margin: 0 auto; }
+.section-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); margin-bottom: .45rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--forest); line-height: 1.2; }
+.section-body { font-size: .95rem; color: var(--mid); line-height: 1.75; max-width: 640px; }
+
+/* ── SENT SECTION ── */
+.sent-section { padding: 5rem 2rem 4rem; background: var(--cream); }
+
+.sent-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 3.5rem; }
+@media (max-width: 720px) { .sent-intro { grid-template-columns: 1fr; gap: 2rem; } }
+
+.sent-intro-text {}
+.sent-intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--forest); margin-bottom: 1rem; line-height: 1.2; }
+.sent-intro-text p { font-size: .92rem; color: var(--mid); line-height: 1.75; margin-bottom: .9rem; }
+.sent-intro-text .contact-link {
+  display: inline-flex; align-items: center; gap: .4rem;
+  margin-top: .5rem; font-size: .85rem; font-weight: 600;
+  color: var(--forest); text-decoration: none;
+  border-bottom: 1.5px solid var(--gold); padding-bottom: 1px;
+  transition: color .2s;
+}
+.sent-intro-text .contact-link:hover { color: var(--sage); }
+
+/* Video embed */
+.video-wrap { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 16/9; background: var(--forest-dk); }
+.video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* S.E.N.T. four-letter cards */
+.sent-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem; }
+@media (max-width: 700px) { .sent-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 400px) { .sent-cards { grid-template-columns: 1fr; } }
+
+.sent-card {
+  background: var(--warm); border: 1.5px solid var(--border);
+  border-radius: var(--r-lg); padding: 1.5rem 1.25rem;
+  display: flex; flex-direction: column; gap: .6rem;
+  transition: box-shadow .2s, transform .15s;
+}
+.sent-card:hover { box-shadow: 0 8px 24px rgba(28,58,43,.1); transform: translateY(-2px); }
+.sent-letter {
+  font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700;
+  color: var(--forest); line-height: 1;
+  border-bottom: 2px solid var(--gold); padding-bottom: .4rem; margin-bottom: .25rem;
+  display: inline-block;
+}
+.sent-word { font-weight: 700; font-size: .95rem; color: var(--forest); line-height: 1.3; }
+.sent-desc { font-size: .82rem; color: var(--mid); line-height: 1.6; flex: 1; }
+
+/* Second video — smaller, centered */
+.sent-video2 { max-width: 680px; margin: 0 auto; }
+.sent-video2-label {
+  text-align: center; margin-bottom: 1rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── CLEAR VALUES ── */
+.clear-section { background: var(--forest); padding: 5rem 2rem; }
+.clear-header { text-align: center; margin-bottom: 3rem; }
+.clear-header .section-eyebrow { color: var(--gold); }
+.clear-header .section-title { color: var(--cream); margin-top: .35rem; }
+.clear-header p { color: var(--sage-lt); font-size: .95rem; max-width: 520px; margin: .9rem auto 0; line-height: 1.7; }
+
+.clear-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+@media (max-width: 900px) { .clear-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .clear-grid { grid-template-columns: 1fr; } }
+
+.clear-card {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(168,196,176,.15);
+  border-radius: var(--r-lg); padding: 1.75rem 1.25rem;
+  text-align: center; transition: background .2s, transform .15s;
+}
+.clear-card:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+
+.clear-letter-wrap {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(196,154,60,.18); border: 1.5px solid rgba(196,154,60,.35);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.clear-letter {
+  font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700;
+  color: var(--gold-lt); line-height: 1;
+}
+.clear-word {
+  font-weight: 700; font-size: .92rem; color: #fff;
+  margin-bottom: .55rem; letter-spacing: .01em;
+}
+.clear-desc { font-size: .8rem; color: var(--sage-lt); line-height: 1.6; }
+
+/* ── MISSION OPPORTUNITIES ── */
+.missions-section { padding: 5rem 2rem; background: var(--warm); }
+.missions-header { margin-bottom: 3rem; }
+
+.missions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 800px) { .missions-grid { grid-template-columns: 1fr; } }
+
+.mission-card {
+  background: var(--cream); border: 1.5px solid var(--border);
+  border-radius: var(--r-lg); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .2s, transform .15s;
+}
+.mission-card:hover { box-shadow: 0 8px 28px rgba(28,58,43,.1); transform: translateY(-2px); }
+
+.mission-card-top {
+  background: var(--forest); padding: 1.5rem 1.5rem 1.25rem;
+}
+.mission-card-icon { font-size: 1.75rem; margin-bottom: .6rem; }
+.mission-card-title {
+  font-family: 'Playfair Display', serif; font-size: 1.1rem;
+  color: #fff; line-height: 1.25;
+}
+.mission-card-body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.mission-card-body p { font-size: .875rem; color: var(--mid); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+.mission-card-actions { display: flex; flex-direction: column; gap: .5rem; }
+.mission-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  background: var(--forest); color: #fff;
+  padding: .6rem 1.25rem; border-radius: var(--r);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: background .2s;
+}
+.mission-btn-primary:hover { background: var(--forest-md); }
+.mission-btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  border: 1.5px solid var(--border); color: var(--mid);
+  padding: .55rem 1.25rem; border-radius: var(--r);
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.mission-btn-secondary:hover { border-color: var(--sage); color: var(--forest); }
+
+/* ── JOIN THE MISSION CTA ── */
+.cta-strip {
+  background: var(--gold); padding: 4rem 2rem; text-align: center;
+}
+.cta-strip h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--forest-dk); margin-bottom: .75rem; line-height: 1.2;
+}
+.cta-strip p { font-size: .95rem; color: rgba(18,38,24,.75); max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+.cta-strip-actions { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: var(--forest-dk); color: #fff;
+  padding: .75rem 1.75rem; border-radius: var(--r);
+  font-weight: 700; font-size: .95rem; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.btn-dark:hover { background: var(--forest); transform: translateY(-2px); }
+.btn-outline-dark {
+  display: inline-flex; align-items: center; gap: .45rem;
+  border: 2px solid rgba(18,38,24,.4); color: var(--forest-dk);
+  padding: .72rem 1.5rem; border-radius: var(--r);
+  font-weight: 600; font-size: .9rem; text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.btn-outline-dark:hover { border-color: var(--forest-dk); background: rgba(18,38,24,.06); }
+
+/* ── FOOTER ── */
+footer { background: var(--forest); color: var(--sage-lt); padding: 3.5rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.1); }
+.footer-grid { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
+@media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
+.footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
+.footer-col a { display: block; color: var(--sage-lt); text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { max-width: 1040px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    Canopy Roads Baptist
+    <small>Tallahassee, Florida</small>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="visit.html">Plan Your Visit</a></li>
+    <li><a href="connect.html">Ministries</a></li>
+    <li><a href="media.html">Sermons</a></li>
+    <li><a href="calendar.html">Events</a></li>
+    <li><a href="give.html">Give</a></li>
+    <li><a href="visit.html" class="nav-cta">First visit?</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <svg class="hero-canopy" viewBox="0 0 1440 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,130 L0,80 Q90,35 180,68 Q270,18 380,62 Q480,12 580,58 Q675,8 770,55 Q868,10 960,56 Q1055,14 1150,60 Q1250,22 1340,65 Q1395,48 1440,58 L1440,130Z" fill="rgba(43,87,65,0.45)"/>
+    <path d="M0,130 L0,105 Q180,80 360,105 Q540,80 720,105 Q900,80 1080,105 Q1260,82 1440,100 L1440,130Z" fill="rgba(28,58,43,0.6)"/>
+  </svg>
+  <div class="container" style="position:relative">
+    <p class="hero-eyebrow">Our mission &amp; vision</p>
+    <h1 class="hero-vision">
+      In the next twenty years, we will raise up<br>
+      a new generation of Christ followers by becoming<br>
+      an outwardly-focused church of <em>neighborhood<br>
+      and marketplace missionaries</em> who live S.E.N.T.
+    </h1>
+    <p class="hero-sub">We believe the most strategic way to change our community's future is to transform families and the next generation — starting right where we already are.</p>
+    <div class="hero-links">
+      <a class="btn-gold" href="#sent">What is S.E.N.T.?</a>
+      <a class="btn-ghost-lt" href="#missions">Mission Opportunities</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── S.E.N.T. ── -->
+<section class="sent-section" id="sent">
+  <div class="container">
+
+    <div class="sent-intro">
+      <div class="sent-intro-text">
+        <p class="section-eyebrow">Living sent</p>
+        <h2>We can change the world when we partner with God</h2>
+        <p>"Living S.E.N.T." is a missional framework where each letter stands for a specific everyday practice. These habits are simple, scalable, and reproducible — and when practiced with gospel intentionality, they activate every person to live as an ordinary, everyday missionary right where they already are.</p>
+        <p>You don't need to travel overseas or have a seminary degree. The mission field is your neighborhood, your workplace, your kids' school. S.E.N.T. gives you a way to be intentional about it.</p>
+        <a class="contact-link" href="mailto:Justin.wester@canopyroads.org">
+          Get trained in Living S.E.N.T. → email Justin
+        </a>
+      </div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/sf1GRYwQQqU"
+          title="Mission and Vision — Canopy Roads Baptist Church"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Four SENT cards -->
+    <div class="sent-cards">
+      <div class="sent-card">
+        <span class="sent-letter">S</span>
+        <div class="sent-word">See People Like Jesus</div>
+        <p class="sent-desc">Noticing the people already around you and choosing to see them the way Jesus does — with compassion, curiosity, and genuine care. Pay attention to who God has placed in your path.</p>
+      </div>
+      <div class="sent-card">
+        <span class="sent-letter">E</span>
+        <div class="sent-word">Eat with People Like Jesus</div>
+        <p class="sent-desc">Sharing meals across difference. The table is one of the most powerful places for relationship — and relationship is how the gospel travels most naturally.</p>
+      </div>
+      <div class="sent-card">
+        <span class="sent-letter">N</span>
+        <div class="sent-word">Neighbor People Like Jesus</div>
+        <p class="sent-desc">Becoming a genuinely good neighbor — to the people on your street, in your apartment building, or sitting beside you at school or work. Presence precedes influence.</p>
+      </div>
+      <div class="sent-card">
+        <span class="sent-letter">T</span>
+        <div class="sent-word">Talk About Jesus</div>
+        <p class="sent-desc">Having natural, honest conversations about faith — not as a rehearsed script, but out of the overflow of what God has done in your own life. You have a story worth telling.</p>
+      </div>
+    </div>
+
+    <!-- Second video -->
+    <div class="sent-video2">
+      <p class="sent-video2-label">Justin Wester on Living S.E.N.T.</p>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/OMPBrg2BM9I"
+          title="Living S.E.N.T. — Justin Wester"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── C.L.E.A.R. VALUES ── -->
+<section class="clear-section" id="values">
+  <div class="container">
+    <div class="clear-header">
+      <p class="section-eyebrow">Who we are</p>
+      <h2 class="section-title">Our values are C.L.E.A.R.</h2>
+      <p>Five commitments that shape how we worship, serve, and love one another — and how we engage our city.</p>
+    </div>
+    <div class="clear-grid">
+
+      <div class="clear-card">
+        <div class="clear-letter-wrap"><span class="clear-letter">C</span></div>
+        <div class="clear-word">Community</div>
+        <p class="clear-desc">We build and preserve relationships, focus on families, and care for one another — because the church is a body, not an audience.</p>
+      </div>
+
+      <div class="clear-card">
+        <div class="clear-letter-wrap"><span class="clear-letter">L</span></div>
+        <div class="clear-word">Life Transformation</div>
+        <p class="clear-desc">We cultivate Christ-like character and pursue a Christ-centered life — because following Jesus changes who we are from the inside out.</p>
+      </div>
+
+      <div class="clear-card">
+        <div class="clear-letter-wrap"><span class="clear-letter">E</span></div>
+        <div class="clear-word">Evangelism</div>
+        <p class="clear-desc">We engage our community, befriend the lost, and share the gospel — because every person around us matters to God.</p>
+      </div>
+
+      <div class="clear-card">
+        <div class="clear-letter-wrap"><span class="clear-letter">A</span></div>
+        <div class="clear-word">Authenticity</div>
+        <p class="clear-desc">We live with transparency and integrity — because a church that pretends has nothing to offer a world that already knows it's broken.</p>
+      </div>
+
+      <div class="clear-card">
+        <div class="clear-letter-wrap"><span class="clear-letter">R</span></div>
+        <div class="clear-word">Relevance</div>
+        <p class="clear-desc">We apply Scripture to everyday life, make truth understandable to everyone, and engage cultural issues honestly — because the gospel speaks to real life.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION OPPORTUNITIES ── -->
+<section class="missions-section" id="missions">
+  <div class="container">
+    <div class="missions-header">
+      <p class="section-eyebrow">Get involved</p>
+      <h2 class="section-title" style="margin-bottom:.75rem;">Mission Opportunities</h2>
+      <p class="section-body">Whether it's local or international, Canopy Roads values the command Jesus gives us to go and make disciples. We are always seeking opportunities to be mission-oriented — and we'd love for you to be part of our journey.</p>
+    </div>
+
+    <div class="missions-grid">
+
+      <!-- D.E.R.T. -->
+      <div class="mission-card">
+        <div class="mission-card-top">
+          <div class="mission-card-icon">🚨</div>
+          <h3 class="mission-card-title">Disaster &amp; Emergency Relief Team (D.E.R.T.)</h3>
+        </div>
+        <div class="mission-card-body">
+          <p>The purpose of DERT is to share Christ in times of crisis — whether a natural disaster, a fallen tree, or acts of vandalism. This team shows up to help, no strings attached, as an expression of the gospel in action.</p>
+          <div class="mission-card-actions">
+            <a class="mission-btn-primary" href="mailto:crbcemergencyrelief@comcast.net">Contact D.E.R.T.</a>
+            <a class="mission-btn-secondary" href="https://www.youtube.com/watch?v=Awbql7X_ht8&t=37s" target="_blank" rel="noopener">Watch the story →</a>
+            <a class="mission-btn-secondary" href="https://flbaptist.org/ministries/disaster-relief/" target="_blank" rel="noopener">FL Baptist Relief Training →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- International Missions -->
+      <div class="mission-card">
+        <div class="mission-card-top">
+          <div class="mission-card-icon">🌎</div>
+          <h3 class="mission-card-title">International Mission Trips</h3>
+        </div>
+        <div class="mission-card-body">
+          <p>Canopy Roads desires to take the gospel to every corner of the earth. We partner with Hands for Hope for international trips — with a focus on Nicaragua — to serve communities and share the love of Christ across borders.</p>
+          <div class="mission-card-actions">
+            <a class="mission-btn-primary" href="mailto:rregister@nettally.com">Contact Hands for Hope</a>
+            <a class="mission-btn-secondary" href="mailto:Justin.wester@canopyroads.org">Ask Pastor Justin →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Good News Club -->
+      <div class="mission-card">
+        <div class="mission-card-top">
+          <div class="mission-card-icon">📖</div>
+          <h3 class="mission-card-title">Serve in Good News Club</h3>
+        </div>
+        <div class="mission-card-body">
+          <p>Go on a mission trip every week — at a local public school. Good News Club is a weekly after-school Bible club for elementary-age kids, with dynamic lessons, songs, missionary stories, and Scripture memory. Your presence changes a child's life.</p>
+          <div class="mission-card-actions">
+            <a class="mission-btn-primary" href="mailto:Jenna.morris@canopyroads.org">Contact Jenna Morris</a>
+            <a class="mission-btn-secondary" href="connect.html#children">Learn about Kids Ministry →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN CTA ── -->
+<section class="cta-strip">
+  <h2>Ready to live sent?</h2>
+  <p>Whether that means serving locally, joining a mission trip, or simply learning how to be a better neighbor — we'd love to walk alongside you.</p>
+  <div class="cta-strip-actions">
+    <a class="btn-dark" href="mailto:Justin.wester@canopyroads.org">Talk to Pastor Justin</a>
+    <a class="btn-outline-dark" href="connect.html">Explore Ministries</a>
+    <a class="btn-outline-dark" href="visit.html">Plan Your Visit</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:1.15rem;">Canopy Roads Baptist</a>
+      <p>Serving Northwest Tallahassee and the world since 1987. Rooted in grace. Sent on mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="mission.html">Mission &amp; Vision</a>
+      <a href="team.html">Meet Our Team</a>
+      <a href="visit.html">Plan Your Visit</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="connect.html">Ministries</a>
+      <a href="media.html">Sermons</a>
+      <a href="calendar.html">Events</a>
+      <a href="http://canopyroads.online.church" target="_blank">Church Online</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8509060047">(850) 906-0047</a>
+      <a href="https://maps.google.com/?q=925+Bannerman+Rd+Tallahassee+FL+32312" target="_blank" rel="noopener">925 Bannerman Rd<br>Tallahassee, FL 32312</a>
+      <a href="give.html">Give Online</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Canopy Roads Baptist Church</span>
+    <span>Sunday 9:30am &amp; 11am · 925 Bannerman Rd, Tallahassee FL</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+</script>
+</body>
+</html>
