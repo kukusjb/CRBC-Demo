@@ -7,6 +7,7 @@
 <meta name="description" content="Upcoming events, weekly schedule, and ministry gatherings at Canopy Roads Baptist Church in Tallahassee, FL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -499,18 +500,40 @@ function buildSidebar() {
 }
 
 // ── Load & render events ──────────────────────────────────────────
+// Events are pulled from a published Google Sheet (File > Share > Publish to web > CSV).
+// Sheet columns must be: date, date_end, category, title, time, location, url, description
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR0HeTyGFgC1zMMDHasCdG7hxb29KNatpDhDr3YUugrMeYhWnHJaTr_dsCZT9wZrAH6tOHMBdaV4HsB/pub?gid=0&single=true&output=csv';
+
 let allEvents = [];
 let activeFilter = 'all';
 
 async function loadEvents() {
   try {
-    const r = await fetch('events.json');
-    const d = await r.json();
-    allEvents = d.events || [];
+    const r = await fetch(SHEET_CSV_URL + '&_=' + Date.now()); // cache-bust so edits show up sooner
+    const csvText = await r.text();
+
+    const parsed = Papa.parse(csvText, {
+      header: true,
+      skipEmptyLines: true
+    });
+
+    allEvents = parsed.data
+      .map(row => ({
+        date: (row.date || '').trim(),
+        date_end: (row.date_end || '').trim(),
+        category: (row.category || '').trim(),
+        title: (row.title || '').trim(),
+        time: (row.time || '').trim(),
+        location: (row.location || '').trim(),
+        url: (row.url || '').trim(),
+        description: (row.description || '').trim()
+      }))
+      .filter(e => e.title); // blank date = recurring event (always shows); only title is required
+
     renderBoard();
   } catch(e) {
     document.getElementById('eventsBoard').innerHTML =
-      '<div class="empty-state"><span style="font-size:2rem">📋</span><p>Events are loading — make sure <strong>events.json</strong> is uploaded to the same folder on HostGator.</p></div>';
+      '<div class="empty-state"><span style="font-size:2rem">📋</span><p>Events couldn\'t be loaded — check that the Google Sheet is still published to the web as CSV.</p></div>';
   }
 }
 
@@ -528,41 +551,66 @@ function renderBoard() {
   const board = document.getElementById('eventsBoard');
   const now = today();
 
-  // Filter to upcoming events only, sorted chronologically
-  let events = allEvents
-    .filter(e => parseDate(e.date_end || e.date) >= now)
-    .filter(e => activeFilter === 'all' || e.category === activeFilter)
+  const filtered = allEvents.filter(e => activeFilter === 'all' || e.category === activeFilter);
+
+  // Recurring = blank date, always shown, no date filtering
+  const recurring = filtered
+    .filter(e => !e.date)
+    .sort((a,b) => a.title.localeCompare(b.title));
+
+  // Dated = one-time events, upcoming only, sorted chronologically
+  const dated = filtered
+    .filter(e => e.date && parseDate(e.date_end || e.date) >= now)
     .sort((a,b) => parseDate(a.date) - parseDate(b.date));
 
-  if (!events.length) {
-    board.innerHTML = `<div class="empty-state"><span style="font-size:2rem">🌿</span><p>No upcoming events found for this filter.</p><p>Check back soon — or update events.json to add new events.</p></div>`;
+  if (!recurring.length && !dated.length) {
+    board.innerHTML = `<div class="empty-state"><span style="font-size:2rem">🌿</span><p>No upcoming events found for this filter.</p><p>Check back soon — or update the Google Sheet to add new events.</p></div>`;
     return;
   }
 
-  // Group by month
+  let html = '';
+
+  if (recurring.length) {
+    html += `
+      <div class="month-divider">
+        <span class="month-name">Weekly &amp; Recurring</span>
+        <div class="month-rule"></div>
+      </div>
+      ${recurring.map(e => renderEventCard(e)).join('')}
+    `;
+  }
+
+  // Group dated events by month
   const months = {};
-  events.forEach(e => {
+  dated.forEach(e => {
     const d = parseDate(e.date);
     const key = d.getFullYear() + '-' + d.getMonth();
     if (!months[key]) months[key] = { label: MONTHS_LONG[d.getMonth()] + ' ' + d.getFullYear(), events: [] };
     months[key].events.push(e);
   });
 
-  board.innerHTML = Object.values(months).map(m => `
+  html += Object.values(months).map(m => `
     <div class="month-divider">
       <span class="month-name">${m.label}</span>
       <div class="month-rule"></div>
     </div>
     ${m.events.map(e => renderEventCard(e)).join('')}
   `).join('');
+
+  board.innerHTML = html;
 }
 
 function renderEventCard(e) {
-  const d = parseDate(e.date);
   const cat = CAT[e.category] || { label: e.category, color: '#5A8A6A' };
 
-  // Date display — multi-day shows range
+  // Date display — recurring (blank date) shows a Weekly badge; multi-day shows range
   let dateHTML;
+  if (!e.date) {
+    dateHTML = `<div class="event-date-block">
+      <span class="day-num" style="font-size:.85rem;">Weekly</span>
+    </div>`;
+  } else {
+  const d = parseDate(e.date);
   if (e.date_end && e.date_end !== e.date) {
     const d2 = parseDate(e.date_end);
     dateHTML = `<div class="event-date-block">
@@ -575,6 +623,7 @@ function renderEventCard(e) {
       <span class="month-abbr">${MONTHS[d.getMonth()]}</span>
       <span class="day-num">${d.getDate()}</span>
     </div>`;
+  }
   }
 
   const linkStart = e.url ? `<a class="event-card" href="${e.url}" data-cat="${e.category}">` : `<div class="event-card" data-cat="${e.category}">`;
