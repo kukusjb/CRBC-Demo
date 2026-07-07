@@ -6,198 +6,9 @@
   <title>Media | Canopy Roads Baptist Church</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --forest:  #1C3A2B;
-      --sage:    #5A8A6A;
-      --cream:   #F7F3EE;
-      --gold:    #C49A3C;
-      --gold-lt: #F0DFA0;
-      --text:    #2C2C2C;
-      --muted:   #6B7280;
-      --border:  #DDD6CC;
-    }
-
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      background: var(--forest); height: 64px; padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      box-shadow: 0 2px 20px rgba(0,0,0,.3);
-    }
-    .nav-logo { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; text-decoration: none; line-height: 1.2; }
-    .nav-logo small { display: block; font-family: 'Inter', sans-serif; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #A8C4B0; font-weight: 500; }
-    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
-    .nav-links a { color: #A8C4B0; text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: #fff; }
-    .nav-cta { background: var(--gold) !important; color: var(--forest) !important; padding: .4rem 1rem; border-radius: 4px; font-weight: 600 !important; font-size: .8rem !important; }
-    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--forest); padding: 1.25rem 2rem; gap: 1rem; }
-      .hamburger { display: flex; }
-    }
-
-    /* ── PAGE HEADER ── */
-    .page-header {
-      background: var(--forest); color: #fff; text-align: center; padding: 3.5rem 2rem 2.5rem;
-      position: relative; overflow: hidden;
-    }
-    .page-header::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C150,0 300,60 450,30 C600,0 750,60 900,30 C1050,0 1150,45 1200,30 L1200,60 L0,60Z' fill='%23F7F3EE'/%3E%3C/svg%3E") no-repeat bottom/cover;
-    }
-    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: .5rem; }
-    .page-header p { color: rgba(255,255,255,.75); font-size: 1.05rem; }
-
-    /* ── LATEST SERMON HERO ── */
-    .latest-hero {
-      background: #111d17; color: #fff; padding: 3rem 2rem;
-    }
-    .latest-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-    @media (max-width: 700px) { .latest-inner { grid-template-columns: 1fr; } }
-    .latest-label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
-    .latest-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-style: italic; line-height: 1.25; margin-bottom: .5rem; }
-    .latest-meta { color: rgba(255,255,255,.6); font-size: .9rem; margin-bottom: 1.5rem; }
-    .btn-download {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--gold); color: #fff; padding: .75rem 1.5rem;
-      border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem;
-      transition: background .2s; margin-right: .75rem;
-    }
-    .btn-download:hover { background: #a07d2e; }
-    .btn-youtube {
-      display: inline-flex; align-items: center; gap: .5rem;
-      border: 1.5px solid rgba(255,255,255,.4); color: #fff; padding: .75rem 1.5rem;
-      border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem;
-      transition: border-color .2s, background .2s;
-    }
-    .btn-youtube:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-    .latest-video iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 10px; }
-
-    /* ── WATCH SECTION ── */
-    .watch-section { padding: 3.5rem 2rem; }
-    .section-label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); margin-bottom: .4rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--forest); margin-bottom: 1.75rem; }
-    .watch-cards { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-    .watch-card {
-      background: #fff; border: 1.5px solid var(--border); border-radius: 12px;
-      padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start;
-      text-decoration: none; color: inherit; transition: box-shadow .2s, transform .15s;
-    }
-    .watch-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-2px); }
-    .watch-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
-    .watch-icon.yt  { background: #ff000015; }
-    .watch-icon.pod { background: #8e44ad15; }
-    .watch-icon.app { background: #1a73e815; }
-    .watch-card h3 { font-size: 1rem; font-weight: 600; color: var(--forest); margin-bottom: .35rem; }
-    .watch-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 1rem; }
-    .watch-card .card-link { font-size: .85rem; font-weight: 600; color: var(--sage); }
-
-    /* ── SERMON ARCHIVE ── */
-    .archive-section { padding: 1rem 2rem 4rem; }
-    .archive-inner { max-width: 900px; margin: 0 auto; }
-
-    /* search bar */
-    .search-bar {
-      display: flex; gap: .75rem; margin-bottom: 1.75rem; flex-wrap: wrap;
-    }
-    .search-bar input {
-      flex: 1; min-width: 200px; padding: .65rem 1rem; border: 1.5px solid var(--border);
-      border-radius: 8px; font-size: .95rem; font-family: 'Inter', sans-serif;
-      background: #fff; color: var(--text); outline: none;
-    }
-    .search-bar input:focus { border-color: var(--sage); }
-    .view-toggle { display: flex; gap: .5rem; }
-    .view-btn {
-      padding: .6rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
-      background: #fff; font-size: .85rem; font-weight: 600; cursor: pointer;
-      color: var(--muted); transition: .2s;
-    }
-    .view-btn.active { background: var(--forest); color: #fff; border-color: var(--forest); }
-
-    /* year tabs */
-    .year-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .year-tab {
-      padding: .45rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 600;
-      cursor: pointer; border: 1.5px solid var(--border); background: #fff; color: var(--muted);
-      transition: .2s;
-    }
-    .year-tab.active { background: var(--forest); color: #fff; border-color: var(--forest); }
-    .year-tab:hover:not(.active) { border-color: var(--sage); color: var(--sage); }
-
-    /* list view */
-    #list-view { display: block; }
-    .sermon-list { display: flex; flex-direction: column; gap: .5rem; }
-    .sermon-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      background: #fff; border: 1.5px solid var(--border); border-radius: 8px;
-      padding: .75rem 1rem; text-decoration: none; color: inherit;
-      transition: box-shadow .15s, border-color .15s;
-    }
-    .sermon-row:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); border-color: var(--sage); }
-    .sermon-row-left { display: flex; align-items: center; gap: .85rem; min-width: 0; }
-    .sermon-icon { font-size: 1.1rem; flex-shrink: 0; }
-    .sermon-info { min-width: 0; }
-    .sermon-title { font-weight: 600; font-size: .95rem; color: var(--forest); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .sermon-date { font-size: .8rem; color: var(--muted); margin-top: 2px; }
-    .sermon-series-tag {
-      display: inline-block; font-size: .72rem; font-weight: 600; padding: .2rem .55rem;
-      border-radius: 999px; background: var(--forest); color: #fff; flex-shrink: 0;
-      white-space: nowrap;
-    }
-    .dl-badge {
-      font-size: .75rem; font-weight: 600; padding: .25rem .65rem; border-radius: 6px;
-      background: var(--cream); border: 1px solid var(--border); color: var(--muted);
-      flex-shrink: 0; letter-spacing: .04em;
-    }
-
-    /* series view */
-    #series-view { display: none; }
-    .series-group { margin-bottom: 1.25rem; border: 1.5px solid var(--border); border-radius: 12px; background: #fff; overflow: hidden; }
-    .series-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .9rem 1.1rem; cursor: pointer; user-select: none;
-      background: #fff; transition: background .15s;
-    }
-    .series-header:hover { background: #f5f1ec; }
-    .series-header-left { display: flex; align-items: center; gap: .75rem; }
-    .series-name { font-weight: 600; font-size: .95rem; color: var(--forest); }
-    .series-count { font-size: .78rem; color: var(--muted); font-weight: 400; }
-    .series-chevron { font-size: .8rem; color: var(--muted); transition: transform .2s; }
-    .series-header.open .series-chevron { transform: rotate(90deg); }
-    .series-body { border-top: 1px solid var(--border); display: none; }
-    .series-body.open { display: block; }
-    .series-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .6rem 1.1rem; border-bottom: 1px solid #f0ece6; gap: 1rem;
-      text-decoration: none; color: inherit; transition: background .1s;
-    }
-    .series-row:last-child { border-bottom: none; }
-    .series-row:hover { background: #faf8f4; }
-    .series-row-title { font-size: .9rem; color: var(--text); }
-    .series-row-date { font-size: .78rem; color: var(--muted); flex-shrink: 0; }
-
-    /* no results */
-    .no-results { text-align: center; padding: 2.5rem; color: var(--muted); font-size: .95rem; }
-
-    /* ── FOOTER ── */
-    footer { background: var(--forest); color: #A8C4B0; padding: 3rem 2rem 2rem; border-top: 1px solid rgba(168,196,176,.12); }
-    .footer-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(168,196,176,.1); }
-    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    .footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: .6rem; }
-    .footer-col h4 { font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: .85rem; }
-    .footer-col a { display: block; color: #A8C4B0; text-decoration: none; font-size: .84rem; margin-bottom: .45rem; transition: color .2s; }
-    .footer-col a:hover { color: #fff; }
-    .footer-bottom { max-width: 1080px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .74rem; color: var(--muted); flex-wrap: wrap; gap: .75rem; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-media">
 
 <!-- NAV -->
 <nav id="nav">
@@ -235,8 +46,15 @@
       <div id="latestActions"></div>
     </div>
     <div class="latest-video">
+      <!--
+        Auto-updating embed: this points at the channel's "uploads" playlist
+        (channel ID UClzghGlW-vCx4zYRSOm6KVg with UC swapped for UU), which
+        YouTube always orders newest-first. Loading index 0 of that playlist
+        means this iframe shows whatever the most recent upload is with zero
+        maintenance and no API key.
+      -->
       <iframe id="latestEmbed"
-        src="https://www.youtube.com/embed/WuKFlQfpPEQ"
+        src="https://www.youtube.com/embed/videoseries?list=UUlzghGlW-vCx4zYRSOm6KVg"
         title="Latest Sermon"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
@@ -263,12 +81,7 @@
       <p>Audio-only sermons you can listen to anytime. 500+ episodes available on Apple Podcasts.</p>
       <span class="card-link">Listen on Apple Podcasts →</span>
     </a>
-    <a class="watch-card" href="https://apps.apple.com/us/app/canopy-roads-baptist-church/id1508367050" target="_blank">
-      <div class="watch-icon app">📱</div>
-      <h3>CRBC App</h3>
-      <p>Sermons, devotionals, events, and giving — all in one place. Available on iOS and Android.</p>
-      <span class="card-link">Get the CRBC App →</span>
-    </a>
+
   </div>
 </section>
 
@@ -344,46 +157,145 @@ document.getElementById('hamburger').addEventListener('click', function() {
   this.setAttribute('aria-expanded', open);
 });
 
-// ── Load latest sermon ──
+// ── Load latest sermon (from published Google Sheet CSV) ──
+const LATEST_SERMON_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR0HeTyGFgC1zMMDHasCdG7hxb29KNatpDhDr3YUugrMeYhWnHJaTr_dsCZT9wZrAH6tOHMBdaV4HsB/pub?gid=379542724&single=true&output=csv';
+const ARCHIVE_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR0HeTyGFgC1zMMDHasCdG7hxb29KNatpDhDr3YUugrMeYhWnHJaTr_dsCZT9wZrAH6tOHMBdaV4HsB/pub?gid=444764795&single=true&output=csv';
+
+// Rewrites a normal Google Drive "share" link into a direct-download link.
+// Handles the two common share-link shapes; leaves any non-Drive URL
+// (e.g. an old direct PDF link) completely untouched.
+function toDriveDirectLink(url) {
+  if (!url) return url;
+  let m = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (!m) m = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (!m) return url; // not a recognizable Drive link — pass through as-is
+  return `https://drive.google.com/uc?export=download&id=${m[1]}`;
+}
+
+// Minimal CSV parser that handles quoted fields (commas/quotes inside cells).
+function parseCSV(text) {
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i], next = text[i + 1];
+    if (inQuotes) {
+      if (c === '"' && next === '"') { field += '"'; i++; }
+      else if (c === '"') { inQuotes = false; }
+      else { field += c; }
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\r') { /* skip */ }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else field += c;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(cell => cell.trim() !== ''));
+}
+
+// Turn parsed CSV rows into an array of objects keyed by lowercased header.
+function csvToObjects(rows) {
+  const headers = rows[0].map(h => h.trim().toLowerCase());
+  return rows.slice(1).map(r => {
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (r[i] || '').trim());
+    return obj;
+  });
+}
+
+// Picks the row with the most recent parseable date; falls back to the
+// last row in the sheet if dates can't be parsed, so it still works even
+// with unusual date formats.
+function pickLatestRow(records) {
+  let best = null, bestTime = -Infinity;
+  records.forEach(rec => {
+    const t = Date.parse(rec.date);
+    if (!isNaN(t) && t > bestTime) { bestTime = t; best = rec; }
+  });
+  return best || records[records.length - 1];
+}
+
 async function loadLatest() {
   try {
-    const r = await fetch('sermon-latest.json');
-    const d = await r.json();
+    const r = await fetch(LATEST_SERMON_CSV_URL);
+    const csvText = await r.text();
+    const records = csvToObjects(parseCSV(csvText));
+    const d = pickLatestRow(records);
+
     document.getElementById('latestTitle').textContent = d.title || 'Sunday Sermon';
     document.getElementById('latestMeta').textContent =
       [d.date, d.series, d.pastor].filter(Boolean).join(' · ');
 
     const actions = document.getElementById('latestActions');
     let html = '';
-    if (d.url) html += `<a class="btn-download" href="${d.url}" target="_blank">⬇ Download Notes</a>`;
+    // Notes URL is optional — only show the download button when it's filled in.
+    const notesUrl = toDriveDirectLink(d['notes url']);
+    if (notesUrl) html += `<a class="btn-download" href="${notesUrl}" target="_blank">⬇ Download Notes</a>`;
     html += `<a class="btn-youtube" href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank">▶ Watch on YouTube</a>`;
     actions.innerHTML = html;
-
-    if (d.youtube_embed) {
-      document.getElementById('latestEmbed').src = d.youtube_embed;
-    }
+    // Video embed is left alone — it auto-pulls the latest upload via the
+    // playlist trick in the HTML above, independent of this sheet.
   } catch(e) {
-    // fallback — keep defaults already in HTML
+    // fallback — keep defaults already in HTML (title text + auto embed)
     document.getElementById('latestTitle').textContent = 'Sunday Sermon';
     document.getElementById('latestActions').innerHTML =
       `<a class="btn-youtube" href="https://www.youtube.com/channel/UClzghGlW-vCx4zYRSOm6KVg" target="_blank">▶ Watch on YouTube</a>`;
   }
 }
 
-// ── Load sermon archive ──
+// ── Load sermon archive (from published Google Sheet "Archive" tab) ──
 let allSermons = {};
 let currentYear = '2026';
 let currentView = 'list';
 
+// Pulls a 4-digit year out of a date string in any common format
+// ("June 21, 2026", "6/21/2026", "2026-06-21", etc). Falls back to
+// "Undated" so a bad/blank date cell never crashes the grouping.
+function extractYear(dateStr) {
+  if (!dateStr) return 'Undated';
+  const parsed = Date.parse(dateStr);
+  if (!isNaN(parsed)) return String(new Date(parsed).getFullYear());
+  const m = dateStr.match(/\b(20\d{2}|19\d{2})\b/);
+  return m ? m[1] : 'Undated';
+}
+
 async function loadArchive() {
   try {
-    const r = await fetch('sermons.json');
-    const d = await r.json();
-    allSermons = d.sermons || {};
+    const r = await fetch(ARCHIVE_CSV_URL);
+    const csvText = await r.text();
+    const records = csvToObjects(parseCSV(csvText));
+
+    // Map sheet rows into the same shape the render functions already expect.
+    const sermons = records.map(rec => ({
+      title: rec.title || 'Untitled Sermon',
+      date: rec.date || '',
+      series: rec.series || '',
+      pastor: rec.pastor || '',
+      url: toDriveDirectLink(rec['notes url']),
+      rawUrl: rec['notes url'] || '' // kept for accurate PDF/DOCX badge detection
+    }));
+
+    // Group by year (newest years first)
+    allSermons = {};
+    sermons.forEach(s => {
+      const yr = extractYear(s.date);
+      if (!allSermons[yr]) allSermons[yr] = [];
+      allSermons[yr].push(s);
+    });
+    // Sort each year's sermons newest-first
+    Object.values(allSermons).forEach(list =>
+      list.sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0))
+    );
 
     // Build year tabs
-    const years = Object.keys(allSermons).sort((a,b) => b - a);
+    const years = Object.keys(allSermons).sort((a, b) => {
+      if (a === 'Undated') return 1;
+      if (b === 'Undated') return -1;
+      return b - a;
+    });
     const tabContainer = document.getElementById('yearTabs');
+    tabContainer.innerHTML = '';
     years.forEach((yr, i) => {
       const btn = document.createElement('button');
       btn.className = 'year-tab' + (i === 0 ? ' active' : '');
@@ -396,7 +308,7 @@ async function loadArchive() {
     renderCurrentView();
   } catch(e) {
     document.getElementById('sermonList').innerHTML =
-      '<p style="color:var(--muted);padding:1rem">Could not load sermon archive. Make sure sermons.json is uploaded.</p>';
+      '<p style="color:var(--text-muted);padding:1rem">Could not load the sermon archive. Double-check the Archive tab is still published to the web as CSV.</p>';
   }
 }
 
@@ -422,9 +334,13 @@ function setView(v) {
 function getExt(url) {
   if (!url) return '';
   const u = url.toLowerCase();
-  if (u.endsWith('.pdf')) return 'PDF';
   if (u.endsWith('.docx')) return 'DOCX';
-  return 'DOC';
+  if (u.endsWith('.pdf')) return 'PDF';
+  // Drive share links don't carry a file extension, so default to PDF —
+  // the overwhelmingly common format for sermon notes. If you start
+  // uploading Word docs to Drive, add a "type" column to the sheet and
+  // this function can read that instead of guessing.
+  return 'PDF';
 }
 
 function filterSermons() {
@@ -454,9 +370,9 @@ function renderList(q) {
   none.style.display = 'none';
 
   list.innerHTML = filtered.map(s => {
-    const ext = getExt(s.url);
+    const ext = getExt(s.rawUrl || s.url);
     const seriesTag = s.series ? `<span class="sermon-series-tag">${s.series}</span>` : '';
-    return `<a class="sermon-row" href="${s.url}" target="_blank">
+    const rowInner = `
       <div class="sermon-row-left">
         <span class="sermon-icon">${ext === 'PDF' ? '📄' : '📝'}</span>
         <div class="sermon-info">
@@ -466,9 +382,11 @@ function renderList(q) {
       </div>
       <div style="display:flex;align-items:center;gap:.5rem;flex-shrink:0">
         ${seriesTag}
-        <span class="dl-badge">${ext}</span>
-      </div>
-    </a>`;
+        <span class="dl-badge">${s.url ? ext : 'Coming soon'}</span>
+      </div>`;
+    return s.url
+      ? `<a class="sermon-row" href="${s.url}" target="_blank">${rowInner}</a>`
+      : `<div class="sermon-row" style="opacity:.55;cursor:default">${rowInner}</div>`;
   }).join('');
 }
 
@@ -507,12 +425,14 @@ function renderSeries(q) {
 
   container.innerHTML = keys.map(key => {
     const sermons = grouped[key];
-    const rows = sermons.map(s =>
-      `<a class="series-row" href="${s.url}" target="_blank">
+    const rows = sermons.map(s => {
+      const inner = `
         <span class="series-row-title">${s.title}</span>
-        <span class="series-row-date">${s.date} · ${getExt(s.url)}</span>
-      </a>`
-    ).join('');
+        <span class="series-row-date">${s.date} · ${s.url ? getExt(s.rawUrl || s.url) : 'Coming soon'}</span>`;
+      return s.url
+        ? `<a class="series-row" href="${s.url}" target="_blank">${inner}</a>`
+        : `<div class="series-row" style="opacity:.55;cursor:default">${inner}</div>`;
+    }).join('');
 
     return `<div class="series-group">
       <div class="series-header" onclick="toggleSeries(this)">
