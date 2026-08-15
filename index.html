@@ -162,7 +162,7 @@
       <div class="sent-card">
         <div class="sent-letter">T</div>
         <div class="sent-word">Talking about Jesus</div>
-        
+
         <p class="sent-desc">Having natural, honest conversations about faith — not as a script, but out of the overflow of what God has done in our lives.</p>
       </div>
     </div>
@@ -268,13 +268,18 @@
             </svg>
             Newsletter
           </a>
+          <a href="https://linktr.ee/canopyroads" class="app-badge" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L6 12H9L5 18H10V21H14V18H19L15 12H18L12 3Z"/></svg>
+            Linktree
+          </a>
+          <a href="https://www.instagram.com/canopyroadsbaptistchurch" class="app-badge" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
         </div>
       </div>
       <div class="app-visual">
-        <div>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;opacity:0.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          <p>Add a screenshot of the app here</p>
-        </div>
+        <img src="crbclinktree.jpg" alt="Canopy Roads Baptist Church Linktree page" style="max-width:100%; max-height:100%; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,0.3);">
       </div>
     </div>
   </div>
@@ -388,7 +393,7 @@
       const records = homeSermonCsvToObjects(homeParseSermonCSV(csvText));
       const d = homePickLatestSermonRow(records);
 
-      document.getElementById('homeSermonSeries').textContent = d.series || '\u00A0';
+      document.getElementById('homeSermonSeries').textContent = d.series || ' ';
       document.getElementById('homeSermonTitle').textContent = d.title || 'Sunday Sermon';
       document.getElementById('homeSermonMeta').textContent =
         [d.pastor, d.date].filter(Boolean).join(' · ');
@@ -398,7 +403,7 @@
     } catch (e) {
       // Leave the HTML defaults (channel links) in place on failure.
       document.getElementById('homeSermonTitle').textContent = 'Sunday Sermon';
-      document.getElementById('homeSermonSeries').textContent = '\u00A0';
+      document.getElementById('homeSermonSeries').textContent = ' ';
     }
   }
   loadHomeLatestSermon();
@@ -524,7 +529,7 @@
   const dayOfYear = Math.floor((now - start) / 86400000);
   const v = verses[dayOfYear % verses.length];
   document.getElementById('votd-content').innerHTML =
-    '<p class="votd-text">\u201C' + v.text + '\u201D</p><p class="votd-ref">' + v.ref + '</p>';
+    '<p class="votd-text">“' + v.text + '”</p><p class="votd-ref">' + v.ref + '</p>';
 </script>
 </body>
 </html>
