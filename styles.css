@@ -8,6 +8,12 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Guarantee the native `hidden` attribute always hides an element, even
+   when a component rule elsewhere sets its own `display` (e.g. .program-card
+   { display: flex }). Author rules normally beat the browser's built-in
+   [hidden] default, so without this, hidden="" silently gets overridden. */
+[hidden] { display: none !important; }
+
 :root {
   --forest: #1C3A2B;
   --forest-mid: #274F3C;
